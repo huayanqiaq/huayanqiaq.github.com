@@ -1,147 +1,232 @@
-/* 
- * 2018.8.26 modify by lcc
- * based on the js plugin http://www.htmleaf.com/jQuery/Menu-Navigation/20141212771.html
- * based on other unknown sources...
- * thanks for their open sources!
-*/
-jQuery(document).ready(function($) {
+require([], function (){
 
-	"use strict";
-
-	/* Preloader */
-	var Annie_Preloader = function() {
-		$(window).on("load", function() {
-			// fade out the loading animation
-			$("#status").fadeOut();
-
-			//fade out the white DIV that covers the website
-			$("#preloader").delay(400).fadeOut("slow");
+	var isMobileInit = false;
+	var loadMobile = function(){
+		require(['/js/mobile.js'], function(mobile){
+			mobile.init();
+			isMobileInit = true;
 		});
-	};
-
-	/* Nav */
-	var Annie_Nav = function() {
-		// browser window scroll (in pixels) after which the "menu" link is shown
-		var offset = 300;
-		var navigationContainer = $('#cd-nav');
-		var mainNavigation = navigationContainer.find('#cd-main-nav ul');
-
-		//hide or show the "menu" link
-		checkMenu();
-
-		$(window).scroll(function() {
-			checkMenu();
+	}
+	var isPCInit = false;
+	var loadPC = function(){
+		require(['/js/pc.js'], function(pc){
+			pc.init();
+			isPCInit = true;
 		});
+	}
 
-		//open or close the menu clicking on the bottom "menu" link
-		$('.cd-nav-trigger').on('click', function() {
-			$(this).toggleClass('menu-is-open');
+	require(['/js/particles.js'], function(particlesJS) {
+		window.particlesJS('particles-js',
 
-			//we need to remove the transitionEnd event handler (we add it when scolling up with the menu open)
-			mainNavigation.off('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend').toggleClass('is-visible');
-		});
+		  {
+		    "particles": {
+		      "number": {
+		        "value": 80,
+		        "density": {
+		          "enable": true,
+		          "value_area": 800
+		        }
+		      },
+		      "color": {
+		        "value": ['#0fc', '#0ff', '#ccc', '#ffa500', '#7b5d5f', '#ff945c', '#cfb7c4']
+		      },
+		      "shape": {
+		        "type": "circle",
+		        "stroke": {
+		          "width": 0,
+		          "color": "#000000"
+		        },
+		        "polygon": {
+		          "nb_sides": 5
+		        },
+		        "image": {
+		          "src": "img/github.svg",
+		          "width": 100,
+		          "height": 100
+		        }
+		      },
+		      "opacity": {
+		        "value": 0.5,
+		        "random": false,
+		        "anim": {
+		          "enable": false,
+		          "speed": 1,
+		          "opacity_min": 0.1,
+		          "sync": false
+		        }
+		      },
+		      "size": {
+		        "value": 5,
+		        "random": true,
+		        "anim": {
+		          "enable": false,
+		          "speed": 40,
+		          "size_min": 0.1,
+		          "sync": false
+		        }
+		      },
+		      "line_linked": {
+		        "enable": true,
+		        "distance": 150,
+		        "color": "#ff945c",
+		        "opacity": 0.4,
+		        "width": 1
+		      },
+		      "move": {
+		        "enable": true,
+		        "speed": 6,
+		        "direction": "none",
+		        "random": false,
+		        "straight": false,
+		        "out_mode": "out",
+		        "attract": {
+		          "enable": false,
+		          "rotateX": 600,
+		          "rotateY": 1200
+		        }
+		      }
+		    },
+		    "interactivity": {
+		      "detect_on": "canvas",
+		      "events": {
+		        "onhover": {
+		          "enable": true,
+		          "mode": "repulse"
+		        },
+		        "onclick": {
+		          "enable": true,
+		          "mode": "push"
+		        },
+		        "resize": true
+		      },
+		      "modes": {
+		        "grab": {
+		          "distance": 400,
+		          "line_linked": {
+		            "opacity": 1
+		          }
+		        },
+		        "bubble": {
+		          "distance": 400,
+		          "size": 40,
+		          "duration": 2,
+		          "opacity": 8,
+		          "speed": 3
+		        },
+		        "repulse": {
+		          "distance": 200
+		        },
+		        "push": {
+		          "particles_nb": 4
+		        },
+		        "remove": {
+		          "particles_nb": 2
+		        }
+		      }
+		    },
+		    "retina_detect": true,
+		    "config_demo": {
+		      "hide_card": false,
+		      "background_color": "#b61924",
+		      "background_image": "",
+		      "background_position": "50% 50%",
+		      "background_repeat": "no-repeat",
+		      "background_size": "cover"
+		    }
+		  }
 
-		function checkMenu() {
-			if($(window).scrollTop() > offset && !navigationContainer.hasClass('is-fixed')) {
-				navigationContainer.addClass('is-fixed').find('.cd-nav-trigger').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function() {
-					mainNavigation.addClass('has-transitions');
-				});
-			} else if($(window).scrollTop() <= offset) {
+		);
+	});
+	var browser={
+	    versions:function(){
+	    var u = window.navigator.userAgent;
+	    return {
+	        trident: u.indexOf('Trident') > -1, //IE内核
+	        presto: u.indexOf('Presto') > -1, //opera内核
+	        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+	        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+	        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+	        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+	        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+	        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+	        iPad: u.indexOf('iPad') > -1, //是否为iPad
+	        webApp: u.indexOf('Safari') == -1 ,//是否为web应用程序，没有头部与底部
+	        weixin: u.indexOf('MicroMessenger') == -1 //是否为微信浏览器
+	        };
+	    }()
+	}
 
-				//check if the menu is open when scrolling up
-				if(mainNavigation.hasClass('is-visible') && !$('html').hasClass('no-csstransitions')) {
-					//close the menu with animation
-					mainNavigation.addClass('is-hidden').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
-						//wait for the menu to be closed and do the rest
-						mainNavigation.removeClass('is-visible is-hidden has-transitions');
-						navigationContainer.removeClass('is-fixed');
-						$('.cd-nav-trigger').removeClass('menu-is-open');
-					});
+	$(window).bind("resize", function(){
+		if(isMobileInit && isPCInit){
+			$(window).unbind("resize");
+			return;
+		}
+		var w = $(window).width();
+		if(w >= 700){
+			loadPC();
+		}else{
+			loadMobile();
+		}
+	});
 
-					//check if the menu is open when scrolling up - fallback if transitions are not supported
-				} else if(mainNavigation.hasClass('is-visible') && $('html').hasClass('no-csstransitions')) {
-					mainNavigation.removeClass('is-visible has-transitions');
-					navigationContainer.removeClass('is-fixed');
-					$('.cd-nav-trigger').removeClass('menu-is-open');
+	if(browser.versions.mobile === true || $(window).width() < 700){
+		loadMobile();
+	}else{
+		loadPC();
+	}
 
-					//scrolling up with menu closed
-				} else {
-					navigationContainer.removeClass('is-fixed');
-					mainNavigation.removeClass('has-transitions');
+	//是否使用fancybox
+	if(yiliaConfig.fancybox === true){
+		require(['/fancybox/jquery.fancybox.js'], function(pc){
+			var isFancy = $(".isFancy");
+			if(isFancy.length != 0){
+				var imgArr = $(".article-inner img");
+				for(var i=0,len=imgArr.length;i<len;i++){
+					var src = imgArr.eq(i).attr("src");
+					var title = imgArr.eq(i).attr("alt");
+					imgArr.eq(i).replaceWith("<a href='"+src+"' title='"+title+"' rel='fancy-group' class='fancy-ctn fancybox'><img src='"+src+"' title='"+title+"'></a>");
 				}
-			}
-		}
-	};
-
-	/* Random bg-img for header*/
-	var Annie_Random = function() {
-		//generate a random img that pre_name 'from 0 to 110'
-		var random_bg = Math.floor(Math.random() * 109 + 1);
-
-		//var bg = 'url(/img/random/' + random_bg + '.jpg)';
-		var bg = 'url(/img/random/' + random_bg + '.jpg)';
-
-		$("#header-bg-2").css("background-image", bg);
-	};
-
-	/* ToTop */
-	var Annie_ToTop = function() {
-		var upperLimit = 500;
-
-		// Our scroll link element
-		var scrollElem = $('#totop');
-
-		// Scroll to top speed
-		var scrollSpeed = 500;
-
-		scrollElem.hide();
-
-		$(window).scroll(function() {
-			var scrollTop = $(document).scrollTop();
-
-			if(scrollTop > upperLimit) {
-				$(scrollElem).stop().fadeTo(300, 1);
-			} else {
-				$(scrollElem).stop().fadeTo(300, 0);
+				$(".article-inner .fancy-ctn").fancybox();
 			}
 		});
 
-		$(scrollElem).click(function() {
-			$('html, body').animate({
-				scrollTop: 0
-			}, scrollSpeed);
-			return false;
-		});
-	};
+	}
+	//是否开启动画
+	if(yiliaConfig.animate === true){
 
-	/* Show Comment */
-	var Annie_Comment = function() {
-		function Show_Hidden(obj) {
-			var obj = $('#annie-comment-container');
-		}
-
-		var obutton = document.getElementById("annie-comment-button");
-		var odiv = document.getElementById("annie-comment-container");
-		//var obutton = $('#annie-comment-button');
-		//var odiv = $('#annie-comment-container');	
-		if('obutton') {
-			obutton.onclick = function() {
-				Show_Hidden(odiv);
-				$("#annie-comment-button").css("display", 'none');
-				return false;
+		require(['/js/jquery.lazyload.js'], function(){
+			//avatar
+			$(".js-avatar").attr("src", $(".js-avatar").attr("lazy-src"));
+			$(".js-avatar")[0].onload = function(){
+				$(".profilepic").addClass("show");
 			}
+		});
+
+		if(yiliaConfig.isHome === true){
+			//content
+			function showArticle(){
+				$(".article").each(function(){
+					if( $(this).offset().top <= $(window).scrollTop()+$(window).height() && !($(this).hasClass('show')) ) {
+						$(this).removeClass("hidden").addClass("show");
+						$(this).addClass("is-hiddened");
+					}else{
+						if(!$(this).hasClass("is-hiddened")){
+							$(this).addClass("hidden");
+						}
+					}
+				});
+			}
+			$(window).on('scroll', function(){
+				showArticle();
+			});
+			showArticle();
 		}
-	};
 
-	/* other js function */
-	/* ... */
+	}
 
-	/* Initialize */
-	(function Annie_Init() {
-		Annie_Preloader();
-		Annie_Nav();
-		//Annie_Random();
-		Annie_ToTop();
-		//Annie_Comment();
-	})();
+	//是否新窗口打开链接
+	if(yiliaConfig.open_in_new == true){
+		$(".article a[href]").attr("target", "_blank")
+	}
+
 });
