@@ -163,11 +163,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-geoip处理区分IP地理位置" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/09/28/hello-world/" class="article-date">
-  	<time datetime="2018-09-28T07:05:21.243Z" itemprop="datePublished">2018-09-28</time>
+      <a href="/2018/10/06/geoip处理区分IP地理位置/" class="article-date">
+  	<time datetime="2018-10-06T13:15:15.000Z" itemprop="datePublished">2018-10-06</time>
 </a>
     </div>
   
@@ -180,8 +180,8 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/28/hello-world/">
-        Hello World
+      <a class="article-title" href="/2018/10/06/geoip处理区分IP地理位置/">
+        geoip处理区分IP地理位置
         
       </a>
     </h1>
@@ -192,15 +192,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>zmap官方开放了80端口并且80端口是http服务的全球ip地址下载：<br><a href="https://scans.io/zsearch/4bj9dm7d2nmyd1ad-80-http-get-full_ipv4-20160903T201338-zmap-results.csv.lz4" target="_blank" rel="noopener">https://scans.io/zsearch/4bj9dm7d2nmyd1ad-80-http-get-full_ipv4-20160903T201338-zmap-results.csv.lz4</a></p>
+<p>脚本的目的就是为了利用GEOIP区分处理出哪些IP地址是中国的，只取出中国的IP地址，然后来利用爬虫抓取</p>
+<p>使用脚本前需要安装 pip install pygeoip<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygeoip</span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line">f=open(<span class="string">'ip.txt'</span>,<span class="string">'w'</span>)</span><br><span class="line">gi = pygeoip.GeoIP(<span class="string">'GeoLiteCity.dat'</span>, pygeoip.MEMORY_CACHE)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'123.csv'</span>,<span class="string">'rb'</span>) <span class="keyword">as</span> file:</span><br><span class="line">    filecsv=csv.reader(file)</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> filecsv:</span><br><span class="line">        location = gi.record_by_addr(line[<span class="number">0</span>])</span><br><span class="line">        <span class="comment">#print location</span></span><br><span class="line">        <span class="keyword">if</span> location:</span><br><span class="line">            <span class="keyword">if</span> location[<span class="string">'country_code'</span>]==<span class="string">"CN"</span>:</span><br><span class="line">                f.write(line[<span class="number">0</span>]+<span class="string">"\n"</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -226,6 +220,584 @@
 
 
   
+    <article id="post-fofa采集脚本基于-phantomjs-selenium" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/06/fofa采集脚本基于-phantomjs-selenium/" class="article-date">
+  	<time datetime="2018-10-06T13:05:57.000Z" itemprop="datePublished">2018-10-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/06/fofa采集脚本基于-phantomjs-selenium/">
+        fofa采集脚本基于(phantomjs+selenium)
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>新手浏览器自动化练习项目:</p>
+<p>脚本运行:<br><img src="/media/cike/娱乐/github仓库/hexo/blog/source/_posts/20170605104506233.png" alt="运行脚本"><br>数据库保存:<br><img src="/media/cike/娱乐/github仓库/hexo/blog/source/_posts/20170605104551531.png" alt="数据库保存截图"></p>
+<p>脚本连接:<br><a href="https://github.com/huayanqiaq/fofa_spider" target="_blank" rel="noopener">https://github.com/huayanqiaq/fofa_spider</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-python编程中在ubuntu中安装虚拟环境及环境配置" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/06/python编程中在ubuntu中安装虚拟环境及环境配置/" class="article-date">
+  	<time datetime="2018-10-06T13:04:16.000Z" itemprop="datePublished">2018-10-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/06/python编程中在ubuntu中安装虚拟环境及环境配置/">
+        python编程中在ubuntu中安装虚拟环境及环境配置
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="python编程中在ubuntu中安装虚拟环境及环境配置"><a href="#python编程中在ubuntu中安装虚拟环境及环境配置" class="headerlink" title="python编程中在ubuntu中安装虚拟环境及环境配置"></a>python编程中在ubuntu中安装虚拟环境及环境配置</h1><p>1.升级python包管理工具pip</p>
+<p>pip install –upgrade pip</p>
+<p>备注：当你想升级一个包的时候 <code>pip install --upgrade 包名</code><br>2.python虚拟环境安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python-virtualenv</span><br><span class="line">sudo easy_install virtualenvwrapper</span><br></pre></td></tr></table></figure>
+<p>上述工具装好后找不到mkvirtualenv命令，需要执行以下环境变量设置。</p>
+<p>1.创建目录用来存放虚拟环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir $HOME/.virtualenvs</span><br></pre></td></tr></table></figure>
+<p>2.在~/.bashrc中添加新行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export WORKON_HOME=$HOME/.virtualenvs</span><br><span class="line">source /usr/local/bin/virtualenvwrapper.sh</span><br></pre></td></tr></table></figure>
+<p>3.然后运行:<br>    source ~/.bashrc<br>3.创建python虚拟环境:<br>    mkvirtualenv [虚拟环境名称]<br>4.进入虚拟环境：<br>workon [虚拟环境名称]</p>
+<p>5.退出虚拟环境 离开 deactivate</p>
+<p>5.删除(慎用)<br>rmvirtualenv [虚拟环境名称]</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-sqlmap数据转中文字符串" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/06/sqlmap数据转中文字符串/" class="article-date">
+  	<time datetime="2018-10-06T13:03:00.000Z" itemprop="datePublished">2018-10-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/06/sqlmap数据转中文字符串/">
+        sqlmap数据转中文字符串
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>sqlmap数据转中文字符串</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="comment">#sqlmap 转中文字符串</span></span><br><span class="line">str = <span class="string">'\xb3\xac\xbc\xb6\xc7\xbf\xb4\xf3\xcc\xab\xcf\xb2\xbb\xb6\xc1\xcb'</span></span><br><span class="line">b = repr(str)</span><br><span class="line"><span class="keyword">print</span> unicode(eval(b),<span class="string">"gbk"</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-中文姓名转拼音生产特定格式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/06/中文姓名转拼音生产特定格式/" class="article-date">
+  	<time datetime="2018-10-06T13:01:41.000Z" itemprop="datePublished">2018-10-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/06/中文姓名转拼音生产特定格式/">
+        中文姓名转拼音生产特定格式
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>pingyin.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">__version__ = <span class="string">'0.9'</span></span><br><span class="line">__all__ = [<span class="string">"PinYin"</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os.path</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PinYin</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, dict_file=<span class="string">'word.data'</span>)</span>:</span></span><br><span class="line">        self.word_dict = &#123;&#125;</span><br><span class="line">        self.dict_file = dict_file</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">load_word</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(self.dict_file):</span><br><span class="line">            <span class="keyword">raise</span> IOError(<span class="string">"NotFoundFile"</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">with</span> file(self.dict_file) <span class="keyword">as</span> f_obj:</span><br><span class="line">            <span class="keyword">for</span> f_line <span class="keyword">in</span> f_obj.readlines():</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    line = f_line.split(<span class="string">'    '</span>)</span><br><span class="line">                    self.word_dict[line[<span class="number">0</span>]] = line[<span class="number">1</span>]</span><br><span class="line">                <span class="keyword">except</span>:</span><br><span class="line">                    line = f_line.split(<span class="string">'   '</span>)</span><br><span class="line">                    self.word_dict[line[<span class="number">0</span>]] = line[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hanzi2pinyin</span><span class="params">(self, string=<span class="string">""</span>)</span>:</span></span><br><span class="line">        result = []</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isinstance(string, unicode):</span><br><span class="line">            string = string.decode(<span class="string">"utf-8"</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> char <span class="keyword">in</span> string:</span><br><span class="line">            key = <span class="string">'%X'</span> % ord(char)</span><br><span class="line">            result.append(self.word_dict.get(key, char).split()[<span class="number">0</span>][:<span class="number">-1</span>].lower())</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hanzi2pinyin_split</span><span class="params">(self, string=<span class="string">""</span>, split=<span class="string">""</span>)</span>:</span></span><br><span class="line">        result = self.hanzi2pinyin(string=string)</span><br><span class="line">        <span class="keyword">if</span> split == <span class="string">""</span>:</span><br><span class="line">            <span class="keyword">return</span> result</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> split.join(result)</span><br></pre></td></tr></table></figure>
+<p>test.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> pinyin <span class="keyword">import</span> PinYin</span><br><span class="line">test = PinYin()</span><br><span class="line">test.load_word()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'66.txt'</span>,<span class="string">'r'</span>) <span class="keyword">as</span> content:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> content:</span><br><span class="line">        name=i.rstrip()</span><br><span class="line">        namelist = test.hanzi2pinyin(string=name)</span><br><span class="line">        <span class="comment">#print namelist</span></span><br><span class="line">        <span class="keyword">if</span> len(namelist)==<span class="number">2</span>:</span><br><span class="line">            print(namelist[<span class="number">0</span>] + namelist[<span class="number">1</span>][<span class="number">0</span>]+<span class="string">"@mailadmin"</span>)</span><br><span class="line">        <span class="keyword">elif</span> len(namelist)==<span class="number">3</span>:</span><br><span class="line">            print(namelist[<span class="number">0</span>]+namelist[<span class="number">1</span>][<span class="number">0</span>] + namelist[<span class="number">2</span>][<span class="number">0</span>]+<span class="string">"@mailadmin"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>中文名:张国三<br>生成拼音:zhanggs</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-centos下搭建sockets5代理" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/06/centos下搭建sockets5代理/" class="article-date">
+  	<time datetime="2018-10-06T12:58:16.000Z" itemprop="datePublished">2018-10-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/06/centos下搭建sockets5代理/">
+        centos下搭建sockets5代理
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>安装依赖环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install pam-devel openldap-devel openssl-devel</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>有可能有其他错误最好安装下这个依赖包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install pam-devel</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>安装sockets5</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http://downloads.sourceforge.net/project/ss5/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz</span><br><span class="line">tar -xzvf ss5-3.8.9-8.tar.gz</span><br><span class="line">cd ss5-3.8.9</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>修改配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/opt/ss5/ss5.conf</span><br><span class="line">auth 0.0.0.0/0 – -</span><br><span class="line">改为</span><br><span class="line">auth 0.0.0.0/0 – u</span><br><span class="line"> </span><br><span class="line">permit – 0.0.0.0/0 – 0.0.0.0/0 – – – – -</span><br><span class="line">改成为</span><br><span class="line">permit u 0.0.0.0/0 – 0.0.0.0/0 – – – – -</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>添加用户账号密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/opt/ss5/ss5.passwd</span><br><span class="line"> ##用户  密码</span><br><span class="line">cike 123456</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>sockets5启动测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sh /etc/rc.d/init.d/ss5 start</span><br><span class="line">doneting ss5...</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>添加开机启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">chmod u+x /etc/rc.d/init.d/ss5</span><br><span class="line">chkconfig --add ss5 //可选</span><br><span class="line">chkconfig ss5 on //可选</span><br><span class="line">service ss5 start</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>查看软件启动状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netstat -lntp  | grep ss5</span><br><span class="line">tcp        0      0 0.0.0.0:1080   0.0.0.0:*      LISTEN      14262/ss5</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>修改默认的链接端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/ss5</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>在/etc/sysconfig/ss5这个文件中，添加下面这一行命令，-b后面的参数代表监听的ip地址和端口号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SS5_OPTS=&quot; -u root -b 0.0.0.0:8080&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Python-发送邮件" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/06/Python-发送邮件/" class="article-date">
+  	<time datetime="2018-10-06T12:53:19.000Z" itemprop="datePublished">2018-10-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/06/Python-发送邮件/">
+        Python 发送邮件
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="今天要介绍的重点对象——yagmail库"><a href="#今天要介绍的重点对象——yagmail库" class="headerlink" title="今天要介绍的重点对象——yagmail库"></a>今天要介绍的重点对象——yagmail库</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> yagmail</span><br><span class="line">yag = yagmail.SMTP(user=<span class="string">'user@163.com'</span>,password=<span class="string">'1234'</span>,host=<span class="string">'smtp.163.com'</span>)</span><br><span class="line">contents = [<span class="string">'这里是内容'</span>]</span><br><span class="line">yag.send(<span class="string">'target@qq.com'</span>,<span class="string">'主题：这是一个主题'</span>,contents)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-centos6-64位一键桌面环境-VNC" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/06/centos6-64位一键桌面环境-VNC/" class="article-date">
+  	<time datetime="2018-10-06T12:52:09.000Z" itemprop="datePublished">2018-10-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/06/centos6-64位一键桌面环境-VNC/">
+        centos6 64位一键桌面环境+VNC
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>第一、登陆SSH输入一键安装VNC脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nano -y; yum update -y; yum upgrade -y; yum install tigervnc-server -y; yum groupinstall "Desktop" -y; yum install firefox -y; rpm -ivh https://soft.laozuo.org/vnc/adobe-release-x86_64-1.0-1.noarch.rpm; rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux; yum install flash-plugin nspluginwrapper alsa-plugins-pulseaudio libcurl -y; echo 'echo "nameserver 8.8.8.8" &gt;&gt; /etc/resolv.conf; ' &gt;&gt; /etc/rc.local; echo 'VNCSERVERS="1:root"' &gt;&gt; /etc/sysconfig/vncservers; echo 'VNCSERVERARGS[1]="-geometry 1000x700"' &gt;&gt; /etc/sysconfig/vncservers; vncpasswd; chkconfig vncserver on --level 345; reboot;</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>只需要在我们的CENTOS 6 64位环境中丢入上面的脚本回车，就会自动安装，在安装最后，会要求我们输入两次VNC密码。</p>
+<p>安装成功之后会自动REBOOT重启VPS，然后稍等启动之后，我们在用VNC链接软件登陆远程桌面</p>
+<p>远程端口:5901</p>
+<p>使用 root用户登录即可</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-URLBASE64解码编码" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/06/URLBASE64解码编码/" class="article-date">
+  	<time datetime="2018-10-06T12:50:32.000Z" itemprop="datePublished">2018-10-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/06/URLBASE64解码编码/">
+        URLBASE64解码编码
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="个人解密JWT的尝试"><a href="#个人解密JWT的尝试" class="headerlink" title="个人解密JWT的尝试"></a>个人解密JWT的尝试</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># _*_ coding:utf-8 _*_</span></span><br><span class="line">__author__ = <span class="string">'cike'</span></span><br><span class="line">__date__ = <span class="string">'18-7-31 下午9:03'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="comment"># str="加号cike"</span></span><br><span class="line"><span class="comment"># content1 = base64.b64encode(str.encode('utf-8')) #进行 base64编码</span></span><br><span class="line"><span class="comment"># # num = len(content1)%4</span></span><br><span class="line"><span class="comment"># # print(num)</span></span><br><span class="line"><span class="comment"># print(content1)</span></span><br><span class="line"><span class="comment"># content2 = base64.urlsafe_b64encode(str.encode('utf-8'))#进行 urlbase64　编码</span></span><br><span class="line"><span class="comment"># # print(type(content2))</span></span><br><span class="line"><span class="comment"># print(content2)</span></span><br><span class="line">str2 = <span class="string">'eyJpYXQiOjE1MzMwNDY2NTksInN1YiI6IntcInRyYWRlcklkXCI6XCIwMDAwMDAzNTk2M1wifSIsImlzcyI6IiIsImV4cCI6MTUzMzEzMzA1OX0=='</span>.encode(<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="comment">#可以使用%4判断==号</span></span><br><span class="line"><span class="comment"># print(type(str2))</span></span><br><span class="line"><span class="comment"># print(str2)</span></span><br><span class="line">content3 = base64.urlsafe_b64decode(str2)<span class="comment">#进行urlbase64解码</span></span><br><span class="line">print(content3)</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-dante搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/06/dante搭建/" class="article-date">
+  	<time datetime="2018-10-06T12:46:51.000Z" itemprop="datePublished">2018-10-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/06/dante搭建/">
+        dante搭建
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> wget <a href="http://www.inet.no/dante/files/dante-1.4.1.tar.gz" target="_blank" rel="noopener">http://www.inet.no/dante/files/dante-1.4.1.tar.gz</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc openssl-devel pcre-devel zlib-devel libtool c++ pam-devel pam</span><br><span class="line">cd /opt/</span><br><span class="line">tar xvzf dante-1.4.1.tar.gz &amp;&amp; cd dante-1.4.1</span><br><span class="line">./configure &amp;&amp; make &amp;&amp; make install</span><br><span class="line">useradd  -s /sbin/nologin socket</span><br><span class="line">passwd socket</span><br><span class="line">vi /etc/danted.conf</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>上面的指令释义:<br>安装编译所需的程序和库<br>今日opt目录<br>下载解压并进入dante目录<br>配置编译安装<br>添加一个名为socket的没有登陆权的用户<br>修改socket用户的密码(因为下面的配置文件是使用用户名密码登陆的)</p>
+<p>编辑配置文件，写入如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">internal: 服务器IP port = Socks5端口</span><br><span class="line">external: 服务器IP</span><br><span class="line">socksmethod: username</span><br><span class="line">user.privileged:root</span><br><span class="line">logoutput: /var/log/danted.log #log save as /var/log/danted.log</span><br><span class="line">client pass &#123;</span><br><span class="line">from: 0.0.0.0/0 to: 0.0.0.0/0</span><br><span class="line">log: connect disconnect</span><br><span class="line">&#125;</span><br><span class="line">pass &#123;</span><br><span class="line">from: 0.0.0.0/0 to: 0.0.0.0/0 port gt 1023</span><br><span class="line">command: bind</span><br><span class="line">log: connect disconnect</span><br><span class="line">&#125;</span><br><span class="line">pass &#123;</span><br><span class="line">from: 0.0.0.0/0 to: 0.0.0.0/0</span><br><span class="line">command: connect udpassociate</span><br><span class="line">log: connect disconnect</span><br><span class="line">&#125;</span><br><span class="line">block &#123;</span><br><span class="line">from: 0.0.0.0/0 to: 0.0.0.0/0</span><br><span class="line">log: connect error</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>保存后，使用命令即可启动sockd：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/sbin/sockd -f /etc/danted.conf &amp;</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>查看启动状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -lntp</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>编写开机启动：</p>
+<p> 　　　　把上面启动sockd的指令添加到/etc/rc.d/rc.local即可</p>
+<p>写开始，停止脚本：</p>
+<p>2.设置开机自启动以及启动脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi sockd-start  ##创建服务启动脚本</span><br><span class="line">killall sockd &gt; /dev/null 2&gt;&amp;1</span><br><span class="line">/usr/local/sbin/sockd -f /etc/danted.conf &amp;</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>vi sockd-stop</p>
+<p>##创建服务停止脚本</p>
+<p>killall sockd &gt; /dev/null 2&gt;&amp;1 </p>
+<p>设置脚本权限：</p>
+<p>chmod +x sockd-start sockd-stop </p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </div>
       <footer id="footer">
