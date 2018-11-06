@@ -163,6 +163,69 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-python-多线程" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/06/python-多线程/" class="article-date">
+  	<time datetime="2018-11-06T14:07:56.000Z" itemprop="datePublished">2018-11-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/06/python-多线程/">
+        python 多线程
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Python多线程"><a href="#Python多线程" class="headerlink" title="Python多线程"></a>Python多线程</h1><p>首先导入模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import threading</span><br></pre></td></tr></table></figure>
+<p>然后创建线程任务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">t = threading.Thread(target=cc, args=(proxy_list,)) #一定要注意args 参数是元祖所以最好多加一个 逗号</span><br></pre></td></tr></table></figure>
+<p>然后执行线程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">t.start()</span><br></pre></td></tr></table></figure>
+<p>然后调用 join 函数等待线程结束</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">还有就是对应多个线程之间操作共同的变量一定要用锁</span><br></pre></td></tr></table></figure>
+<p>lock = threading.Lock()<br>lock.acquire() #获取锁<br>    try:<br>        proxy_list.append(proxy_dict)<br>    finally:<br>        lock.release() #释放锁 （利用try是因为害怕有什么异常导致不能释放锁）<br><code>`</code></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-geoip处理区分IP地理位置" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -691,84 +754,6 @@
       
         <h2 id="个人解密JWT的尝试"><a href="#个人解密JWT的尝试" class="headerlink" title="个人解密JWT的尝试"></a>个人解密JWT的尝试</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># _*_ coding:utf-8 _*_</span></span><br><span class="line">__author__ = <span class="string">'cike'</span></span><br><span class="line">__date__ = <span class="string">'18-7-31 下午9:03'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="comment"># str="加号cike"</span></span><br><span class="line"><span class="comment"># content1 = base64.b64encode(str.encode('utf-8')) #进行 base64编码</span></span><br><span class="line"><span class="comment"># # num = len(content1)%4</span></span><br><span class="line"><span class="comment"># # print(num)</span></span><br><span class="line"><span class="comment"># print(content1)</span></span><br><span class="line"><span class="comment"># content2 = base64.urlsafe_b64encode(str.encode('utf-8'))#进行 urlbase64　编码</span></span><br><span class="line"><span class="comment"># # print(type(content2))</span></span><br><span class="line"><span class="comment"># print(content2)</span></span><br><span class="line">str2 = <span class="string">'eyJpYXQiOjE1MzMwNDY2NTksInN1YiI6IntcInRyYWRlcklkXCI6XCIwMDAwMDAzNTk2M1wifSIsImlzcyI6IiIsImV4cCI6MTUzMzEzMzA1OX0=='</span>.encode(<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="comment">#可以使用%4判断==号</span></span><br><span class="line"><span class="comment"># print(type(str2))</span></span><br><span class="line"><span class="comment"># print(str2)</span></span><br><span class="line">content3 = base64.urlsafe_b64decode(str2)<span class="comment">#进行urlbase64解码</span></span><br><span class="line">print(content3)</span><br></pre></td></tr></table></figure>
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-dante搭建" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/10/06/dante搭建/" class="article-date">
-  	<time datetime="2018-10-06T12:46:51.000Z" itemprop="datePublished">2018-10-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/06/dante搭建/">
-        dante搭建
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> wget <a href="http://www.inet.no/dante/files/dante-1.4.1.tar.gz" target="_blank" rel="noopener">http://www.inet.no/dante/files/dante-1.4.1.tar.gz</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc openssl-devel pcre-devel zlib-devel libtool c++ pam-devel pam</span><br><span class="line">cd /opt/</span><br><span class="line">tar xvzf dante-1.4.1.tar.gz &amp;&amp; cd dante-1.4.1</span><br><span class="line">./configure &amp;&amp; make &amp;&amp; make install</span><br><span class="line">useradd  -s /sbin/nologin socket</span><br><span class="line">passwd socket</span><br><span class="line">vi /etc/danted.conf</span><br></pre></td></tr></table></figure>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>上面的指令释义:<br>安装编译所需的程序和库<br>今日opt目录<br>下载解压并进入dante目录<br>配置编译安装<br>添加一个名为socket的没有登陆权的用户<br>修改socket用户的密码(因为下面的配置文件是使用用户名密码登陆的)</p>
-<p>编辑配置文件，写入如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">internal: 服务器IP port = Socks5端口</span><br><span class="line">external: 服务器IP</span><br><span class="line">socksmethod: username</span><br><span class="line">user.privileged:root</span><br><span class="line">logoutput: /var/log/danted.log #log save as /var/log/danted.log</span><br><span class="line">client pass &#123;</span><br><span class="line">from: 0.0.0.0/0 to: 0.0.0.0/0</span><br><span class="line">log: connect disconnect</span><br><span class="line">&#125;</span><br><span class="line">pass &#123;</span><br><span class="line">from: 0.0.0.0/0 to: 0.0.0.0/0 port gt 1023</span><br><span class="line">command: bind</span><br><span class="line">log: connect disconnect</span><br><span class="line">&#125;</span><br><span class="line">pass &#123;</span><br><span class="line">from: 0.0.0.0/0 to: 0.0.0.0/0</span><br><span class="line">command: connect udpassociate</span><br><span class="line">log: connect disconnect</span><br><span class="line">&#125;</span><br><span class="line">block &#123;</span><br><span class="line">from: 0.0.0.0/0 to: 0.0.0.0/0</span><br><span class="line">log: connect error</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>保存后，使用命令即可启动sockd：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/sbin/sockd -f /etc/danted.conf &amp;</span><br></pre></td></tr></table></figure>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>查看启动状态：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -lntp</span><br></pre></td></tr></table></figure>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>编写开机启动：</p>
-<p> 　　　　把上面启动sockd的指令添加到/etc/rc.d/rc.local即可</p>
-<p>写开始，停止脚本：</p>
-<p>2.设置开机自启动以及启动脚本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi sockd-start  ##创建服务启动脚本</span><br><span class="line">killall sockd &gt; /dev/null 2&gt;&amp;1</span><br><span class="line">/usr/local/sbin/sockd -f /etc/danted.conf &amp;</span><br></pre></td></tr></table></figure>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>vi sockd-stop</p>
-<p>##创建服务停止脚本</p>
-<p>killall sockd &gt; /dev/null 2&gt;&amp;1 </p>
-<p>设置脚本权限：</p>
-<p>chmod +x sockd-start sockd-stop </p>
 
       
     </div>
