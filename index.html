@@ -166,8 +166,8 @@
     <article id="post-php爆绝对路径" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/11/18/php爆绝对路径/" class="article-date">
-  	<time datetime="2018-11-18T11:25:45.335Z" itemprop="datePublished">2018-11-18</time>
+      <a href="/2018/11/27/php爆绝对路径/" class="article-date">
+  	<time datetime="2018-11-27T06:33:35.878Z" itemprop="datePublished">2018-11-27</time>
 </a>
     </div>
   
@@ -178,7 +178,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="php爆绝对路径方法"><a href="#php爆绝对路径方法" class="headerlink" title="php爆绝对路径方法"></a>php爆绝对路径方法</h1><h3 id="单引号爆路径"><a href="#单引号爆路径" class="headerlink" title="单引号爆路径"></a>单引号爆路径</h3><p>直接在URL后面加单引号，要求单引号没有被过滤(gpc=off)且服务器默认返回错误信息。<br><code>www.xxx.com/news.php?id=1′</code></p>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: php爆绝对路径的方法</span><br><span class="line">date: 2018-10-28 20:50:32</span><br><span class="line">tags:</span><br></pre></td></tr></table></figure>
+<h1 id="php爆绝对路径方法"><a href="#php爆绝对路径方法" class="headerlink" title="php爆绝对路径方法"></a>php爆绝对路径方法</h1><h3 id="单引号爆路径"><a href="#单引号爆路径" class="headerlink" title="单引号爆路径"></a>单引号爆路径</h3><p>直接在URL后面加单引号，要求单引号没有被过滤(gpc=off)且服务器默认返回错误信息。<br><code>www.xxx.com/news.php?id=1′</code></p>
 <h3 id="错误参数值爆路径"><a href="#错误参数值爆路径" class="headerlink" title="错误参数值爆路径"></a>错误参数值爆路径</h3><p>将要提交的参数值改成错误值，比如-1。-99999单引号被过滤时不妨试试。<br><code>www.xxx.com/researcharchive.php?id=-1</code></p>
 <h3 id="Google爆路径"><a href="#Google爆路径" class="headerlink" title="Google爆路径"></a>Google爆路径</h3><p>结合关键字和site语法搜索出错页面的网页快照，常见关键字有warning和fatal error。注意，如果目标站点是二级域名，site接的是其对应的顶级域名，这样得到的信息要多得多。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Site:xxx.edu.tw warning</span><br><span class="line">Site:xxx.com.tw “fatal error”</span><br></pre></td></tr></table></figure>
