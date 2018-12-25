@@ -163,6 +163,67 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-centos6-64位一键桌面环境-VNC" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/06/centos6-64位一键桌面环境-VNC/" class="article-date">
+  	<time datetime="2018-10-06T12:52:09.000Z" itemprop="datePublished">2018-10-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/06/centos6-64位一键桌面环境-VNC/">
+        centos6 64位一键桌面环境+VNC
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>第一、登陆SSH输入一键安装VNC脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nano -y; yum update -y; yum upgrade -y; yum install tigervnc-server -y; yum groupinstall "Desktop" -y; yum install firefox -y; rpm -ivh https://soft.laozuo.org/vnc/adobe-release-x86_64-1.0-1.noarch.rpm; rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux; yum install flash-plugin nspluginwrapper alsa-plugins-pulseaudio libcurl -y; echo 'echo "nameserver 8.8.8.8" &gt;&gt; /etc/resolv.conf; ' &gt;&gt; /etc/rc.local; echo 'VNCSERVERS="1:root"' &gt;&gt; /etc/sysconfig/vncservers; echo 'VNCSERVERARGS[1]="-geometry 1000x700"' &gt;&gt; /etc/sysconfig/vncservers; vncpasswd; chkconfig vncserver on --level 345; reboot;</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>只需要在我们的CENTOS 6 64位环境中丢入上面的脚本回车，就会自动安装，在安装最后，会要求我们输入两次VNC密码。</p>
+<p>安装成功之后会自动REBOOT重启VPS，然后稍等启动之后，我们在用VNC链接软件登陆远程桌面</p>
+<p>远程端口:5901</p>
+<p>使用 root用户登录即可</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-URLBASE64解码编码" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1672,69 +1733,6 @@
     <div class="article-entry" itemprop="articleBody">
       
         <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#_*_coding:utf-8_*_</span></span><br><span class="line"><span class="comment">#author: cike</span></span><br><span class="line"><span class="comment">#date: 18-9-13</span></span><br><span class="line"><span class="keyword">import</span> pymysql.cursors</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">connection = pymysql.connect(host=<span class="string">'localhost'</span>,</span><br><span class="line">                            port = <span class="number">3306</span>,</span><br><span class="line">                            user=<span class="string">'root'</span>,</span><br><span class="line">                            passwd=<span class="string">'root'</span>,</span><br><span class="line">                            db =<span class="string">'jsontest'</span>,</span><br><span class="line">                            charset=<span class="string">'utf8mb4'</span>,</span><br><span class="line">                            cursorclass=pymysql.cursors.DictCursor,)</span><br><span class="line"></span><br><span class="line"><span class="comment">#这里设置表名</span></span><br><span class="line">table_name = <span class="string">"test12"</span></span><br><span class="line"><span class="comment">#这里设置需要的字典数据</span></span><br><span class="line">dict1 = &#123;</span><br><span class="line">            <span class="string">"id"</span>: <span class="string">"971"</span>,</span><br><span class="line">            <span class="string">"payout_id"</span>: <span class="string">"10602"</span>,</span><br><span class="line">            <span class="string">"payin_id"</span>: <span class="string">"0"</span>,</span><br><span class="line">            <span class="string">"pay_nums"</span>: <span class="string">"500.00"</span>,</span><br><span class="line">            <span class="string">"pay_state"</span>: <span class="string">"0"</span>,</span><br><span class="line">            <span class="string">"pay_time"</span>: <span class="string">"1536829856"</span>,</span><br><span class="line">            <span class="string">"pay_no"</span>: <span class="string">"PAY2018091348534951"</span>,</span><br><span class="line">            <span class="string">"card_id"</span>: <span class="string">"664"</span>,</span><br><span class="line">            <span class="string">"trade_notes"</span>: <span class="string">"null"</span>,</span><br><span class="line">            <span class="string">"trans_type"</span>: <span class="string">"0"</span>,</span><br><span class="line">            <span class="string">"trans_img"</span>: <span class="string">"null"</span>,</span><br><span class="line">            <span class="string">"get_moneytime"</span>: <span class="string">"null"</span>,</span><br><span class="line">            <span class="string">"fee_nums"</span>: <span class="string">"100.00"</span>,</span><br><span class="line">            <span class="string">"out_card"</span>: <span class="string">"null"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#数据插入函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insert1</span><span class="params">(sql)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">with</span> connection.cursor() <span class="keyword">as</span> cursor:</span><br><span class="line">            cursor.execute(sql)</span><br><span class="line">        connection.commit()</span><br><span class="line">        print(<span class="string">u"创建表%s成功"</span> %(table_name))</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        connection.close()</span><br><span class="line"><span class="comment">#根据元祖数据生成mysql语句</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_sql</span><span class="params">(tuple2)</span>:</span></span><br><span class="line">    str1 = <span class="string">"CREATE TABLE `%s`"</span> %(table_name)</span><br><span class="line">    str2 = <span class="string">"ENGINE=InnoDB DEFAULT CHARSET=utf8;"</span></span><br><span class="line">    str4=<span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> tuple2:</span><br><span class="line">        str3 = <span class="string">"`"</span>+i+<span class="string">"`"</span>+<span class="string">" "</span>+<span class="string">"varchar(255) DEFAULT NULL,"</span></span><br><span class="line">        str4 = str4+str3</span><br><span class="line">    str5 = <span class="string">"("</span>+str4.rstrip(<span class="string">","</span>)+<span class="string">")"</span></span><br><span class="line">    str6 = str1+<span class="string">" "</span>+str5+str2</span><br><span class="line">    <span class="keyword">return</span> str6</span><br><span class="line"><span class="comment">#把字典数据转化为元祖数据</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tuple1</span><span class="params">(dict1)</span>:</span></span><br><span class="line">    list1 = []</span><br><span class="line">    print(<span class="string">u"总字段数:"</span>+str(len(dict1)))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> dict1.keys():</span><br><span class="line">        list1.append(i)</span><br><span class="line">    m = tuple(list1)</span><br><span class="line">    <span class="keyword">return</span> m</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    tuple2 = tuple1(dict1)</span><br><span class="line">    sql_str = make_sql(tuple2)</span><br><span class="line">    insert1(sql_str)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/09/28/hello-world/" class="article-date">
-  	<time datetime="2018-09-28T07:05:21.243Z" itemprop="datePublished">2018-09-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/28/hello-world/">
-        Hello World
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
       
     </div>
