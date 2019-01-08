@@ -40,7 +40,7 @@
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img lazy-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" class="js-avatar">
+			<img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
 			
 		</a>
 
@@ -162,6 +162,61 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Python-发送邮件" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/06/Python-发送邮件/" class="article-date">
+  	<time datetime="2018-10-06T12:53:19.000Z" itemprop="datePublished">2018-10-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/06/Python-发送邮件/">
+        Python 发送邮件
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="今天要介绍的重点对象——yagmail库"><a href="#今天要介绍的重点对象——yagmail库" class="headerlink" title="今天要介绍的重点对象——yagmail库"></a>今天要介绍的重点对象——yagmail库</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> yagmail</span><br><span class="line">yag = yagmail.SMTP(user=<span class="string">'user@163.com'</span>,password=<span class="string">'1234'</span>,host=<span class="string">'smtp.163.com'</span>)</span><br><span class="line">contents = [<span class="string">'这里是内容'</span>]</span><br><span class="line">yag.send(<span class="string">'target@qq.com'</span>,<span class="string">'主题：这是一个主题'</span>,contents)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-centos6-64位一键桌面环境-VNC" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1768,7 +1823,7 @@
   <div class="outer">
     <div id="footer-info">
       <div class="footer-left">
-        &copy; 2018 cike
+        &copy; 2019 cike
       </div>
         <div class="footer-right">
           <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
@@ -1785,7 +1840,7 @@
 	var yiliaConfig = {
 		fancybox: true,
 		mathjax: true,
-		animate: true,
+		animate: false,
 		isHome: true,
 		isPost: false,
 		isArchive: false,
