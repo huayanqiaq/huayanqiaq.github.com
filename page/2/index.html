@@ -163,6 +163,65 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-中文姓名转拼音生产特定格式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/06/中文姓名转拼音生产特定格式/" class="article-date">
+  	<time datetime="2018-10-06T13:01:41.000Z" itemprop="datePublished">2018-10-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/06/中文姓名转拼音生产特定格式/">
+        中文姓名转拼音生产特定格式
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>pingyin.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">__version__ = <span class="string">'0.9'</span></span><br><span class="line">__all__ = [<span class="string">"PinYin"</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os.path</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PinYin</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, dict_file=<span class="string">'word.data'</span>)</span>:</span></span><br><span class="line">        self.word_dict = &#123;&#125;</span><br><span class="line">        self.dict_file = dict_file</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">load_word</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(self.dict_file):</span><br><span class="line">            <span class="keyword">raise</span> IOError(<span class="string">"NotFoundFile"</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">with</span> file(self.dict_file) <span class="keyword">as</span> f_obj:</span><br><span class="line">            <span class="keyword">for</span> f_line <span class="keyword">in</span> f_obj.readlines():</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    line = f_line.split(<span class="string">'    '</span>)</span><br><span class="line">                    self.word_dict[line[<span class="number">0</span>]] = line[<span class="number">1</span>]</span><br><span class="line">                <span class="keyword">except</span>:</span><br><span class="line">                    line = f_line.split(<span class="string">'   '</span>)</span><br><span class="line">                    self.word_dict[line[<span class="number">0</span>]] = line[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hanzi2pinyin</span><span class="params">(self, string=<span class="string">""</span>)</span>:</span></span><br><span class="line">        result = []</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isinstance(string, unicode):</span><br><span class="line">            string = string.decode(<span class="string">"utf-8"</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> char <span class="keyword">in</span> string:</span><br><span class="line">            key = <span class="string">'%X'</span> % ord(char)</span><br><span class="line">            result.append(self.word_dict.get(key, char).split()[<span class="number">0</span>][:<span class="number">-1</span>].lower())</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hanzi2pinyin_split</span><span class="params">(self, string=<span class="string">""</span>, split=<span class="string">""</span>)</span>:</span></span><br><span class="line">        result = self.hanzi2pinyin(string=string)</span><br><span class="line">        <span class="keyword">if</span> split == <span class="string">""</span>:</span><br><span class="line">            <span class="keyword">return</span> result</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> split.join(result)</span><br></pre></td></tr></table></figure>
+<p>test.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="keyword">from</span> pinyin <span class="keyword">import</span> PinYin</span><br><span class="line">test = PinYin()</span><br><span class="line">test.load_word()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'66.txt'</span>,<span class="string">'r'</span>) <span class="keyword">as</span> content:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> content:</span><br><span class="line">        name=i.rstrip()</span><br><span class="line">        namelist = test.hanzi2pinyin(string=name)</span><br><span class="line">        <span class="comment">#print namelist</span></span><br><span class="line">        <span class="keyword">if</span> len(namelist)==<span class="number">2</span>:</span><br><span class="line">            print(namelist[<span class="number">0</span>] + namelist[<span class="number">1</span>][<span class="number">0</span>]+<span class="string">"@mailadmin"</span>)</span><br><span class="line">        <span class="keyword">elif</span> len(namelist)==<span class="number">3</span>:</span><br><span class="line">            print(namelist[<span class="number">0</span>]+namelist[<span class="number">1</span>][<span class="number">0</span>] + namelist[<span class="number">2</span>][<span class="number">0</span>]+<span class="string">"@mailadmin"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>中文名:张国三<br>生成拼音:zhanggs</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-centos下搭建sockets5代理" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1926,7 +1985,7 @@
 	var yiliaConfig = {
 		fancybox: true,
 		mathjax: true,
-		animate: false,
+		animate: ,
 		isHome: true,
 		isPost: false,
 		isArchive: false,
