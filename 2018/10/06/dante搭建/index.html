@@ -3,25 +3,28 @@
 <head>
   <meta charset="utf-8">
   
-  <title>dante搭建 | cike home</title>
+  <title>自由人-dante搭建 | cike home</title>
 
   <!-- keywords -->
+  
+    <meta name="keywords" content="自由人">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="wget http://www.inet.no/dante/files/dante-1.4.1.tar.gz 1234567yum -y install gcc openssl-devel pcre-devel zlib-devel libtool c++ pam-devel pamcd /opt/tar xvzf dante-1.4.1.tar.gz &amp;amp;&amp;amp; cd dante-1">
+<meta name="keywords" content="自由人">
 <meta property="og:type" content="article">
 <meta property="og:title" content="dante搭建">
-<meta property="og:url" content="http://yoursite.com/2018/10/06/dante搭建/index.html">
+<meta property="og:url" content="http://www.7wawa.com/2018/10/06/dante搭建/index.html">
 <meta property="og:site_name" content="cike home">
 <meta property="og:description" content="wget http://www.inet.no/dante/files/dante-1.4.1.tar.gz 1234567yum -y install gcc openssl-devel pcre-devel zlib-devel libtool c++ pam-devel pamcd /opt/tar xvzf dante-1.4.1.tar.gz &amp;amp;&amp;amp; cd dante-1">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
 <meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
 <meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
 <meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
 <meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
-<meta property="og:updated_time" content="2018-10-06T12:48:36.143Z">
+<meta property="og:updated_time" content="2019-01-09T07:18:45.941Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dante搭建">
 <meta name="twitter:description" content="wget http://www.inet.no/dante/files/dante-1.4.1.tar.gz 1234567yum -y install gcc openssl-devel pcre-devel zlib-devel libtool c++ pam-devel pamcd /opt/tar xvzf dante-1.4.1.tar.gz &amp;amp;&amp;amp; cd dante-1">
@@ -50,7 +53,7 @@
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			<img lazy-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" class="js-avatar">
 			
 		</a>
 
@@ -58,6 +61,8 @@
 		  <h1 class="header-author"><a href="/">cike</a></h1>
 		</hgroup>
 
+		
+		<p class="header-subtitle">Freedom</p>
 		
 
 		
@@ -153,6 +158,8 @@
 			  <h1 class="header-author">cike</h1>
 			</hgroup>
 			
+			<p class="header-subtitle">Freedom</p>
+			
 			<nav class="header-menu">
 				<ul>
 				
@@ -209,6 +216,7 @@
         <p> wget <a href="http://www.inet.no/dante/files/dante-1.4.1.tar.gz" target="_blank" rel="noopener">http://www.inet.no/dante/files/dante-1.4.1.tar.gz</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc openssl-devel pcre-devel zlib-devel libtool c++ pam-devel pam</span><br><span class="line">cd /opt/</span><br><span class="line">tar xvzf dante-1.4.1.tar.gz &amp;&amp; cd dante-1.4.1</span><br><span class="line">./configure &amp;&amp; make &amp;&amp; make install</span><br><span class="line">useradd  -s /sbin/nologin socket</span><br><span class="line">passwd socket</span><br><span class="line">vi /etc/danted.conf</span><br></pre></td></tr></table></figure>
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<a id="more"></a>
 <p>上面的指令释义:<br>安装编译所需的程序和库<br>今日opt目录<br>下载解压并进入dante目录<br>配置编译安装<br>添加一个名为socket的没有登陆权的用户<br>修改socket用户的密码(因为下面的配置文件是使用用户名密码登陆的)</p>
 <p>编辑配置文件，写入如下代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">internal: 服务器IP port = Socks5端口</span><br><span class="line">external: 服务器IP</span><br><span class="line">socksmethod: username</span><br><span class="line">user.privileged:root</span><br><span class="line">logoutput: /var/log/danted.log #log save as /var/log/danted.log</span><br><span class="line">client pass &#123;</span><br><span class="line">from: 0.0.0.0/0 to: 0.0.0.0/0</span><br><span class="line">log: connect disconnect</span><br><span class="line">&#125;</span><br><span class="line">pass &#123;</span><br><span class="line">from: 0.0.0.0/0 to: 0.0.0.0/0 port gt 1023</span><br><span class="line">command: bind</span><br><span class="line">log: connect disconnect</span><br><span class="line">&#125;</span><br><span class="line">pass &#123;</span><br><span class="line">from: 0.0.0.0/0 to: 0.0.0.0/0</span><br><span class="line">command: connect udpassociate</span><br><span class="line">log: connect disconnect</span><br><span class="line">&#125;</span><br><span class="line">block &#123;</span><br><span class="line">from: 0.0.0.0/0 to: 0.0.0.0/0</span><br><span class="line">log: connect error</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -260,7 +268,7 @@
 </article>
 
 
-<div class="ds-share share" data-thread-key="dante搭建" data-title="dante搭建" data-url="http://yoursite.com/2018/10/06/dante搭建/"  data-images="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" data-content="dante搭建">
+<div class="ds-share share" data-thread-key="dante搭建" data-title="dante搭建" data-url="http://www.7wawa.com/2018/10/06/dante搭建/"  data-images="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" data-content="dante搭建">
     <div class="ds-share-inline">
       <ul  class="ds-share-icons-16">
       	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
@@ -301,7 +309,7 @@
 	var yiliaConfig = {
 		fancybox: true,
 		mathjax: true,
-		animate: ,
+		animate: true,
 		isHome: false,
 		isPost: true,
 		isArchive: false,

@@ -3,23 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>XSS游戏学习总结备忘录 | cike home</title>
+  <title>自由人-XSS游戏学习总结备忘录 | cike home</title>
 
   <!-- keywords -->
   
+    <meta name="keywords" content="自由人">
+  
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="没有任何过滤的情况： 12&amp;lt;script&amp;gt;confirm(&quot;完成的不错！&quot;)&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; 使用”   &amp;gt;来闭合标签 1test&quot;&amp;gt;&amp;lt;script&amp;gt;confirm(&quot;完成的不错！&quot;)&amp;lt;/script&amp;gt; 过滤了尖括号，用事件来弹窗 12345678&apos; oninpu">
+  <meta name="description" content="没有任何过滤的情况： 12&amp;lt;script&amp;gt;confirm(&quot;完成的不错！&quot;)&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;">
+<meta name="keywords" content="自由人">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XSS游戏学习总结备忘录">
-<meta property="og:url" content="http://yoursite.com/2019/01/08/XSS游戏学习总结备忘录/index.html">
+<meta property="og:url" content="http://www.7wawa.com/2019/01/08/XSS游戏学习总结备忘录/index.html">
 <meta property="og:site_name" content="cike home">
-<meta property="og:description" content="没有任何过滤的情况： 12&amp;lt;script&amp;gt;confirm(&quot;完成的不错！&quot;)&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; 使用”   &amp;gt;来闭合标签 1test&quot;&amp;gt;&amp;lt;script&amp;gt;confirm(&quot;完成的不错！&quot;)&amp;lt;/script&amp;gt; 过滤了尖括号，用事件来弹窗 12345678&apos; oninpu">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-08T09:45:50.430Z">
+<meta property="og:description" content="没有任何过滤的情况： 12&amp;lt;script&amp;gt;confirm(&quot;完成的不错！&quot;)&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-09T07:13:55.186Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XSS游戏学习总结备忘录">
-<meta name="twitter:description" content="没有任何过滤的情况： 12&amp;lt;script&amp;gt;confirm(&quot;完成的不错！&quot;)&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; 使用”   &amp;gt;来闭合标签 1test&quot;&amp;gt;&amp;lt;script&amp;gt;confirm(&quot;完成的不错！&quot;)&amp;lt;/script&amp;gt; 过滤了尖括号，用事件来弹窗 12345678&apos; oninpu">
+<meta name="twitter:description" content="没有任何过滤的情况： 12&amp;lt;script&amp;gt;confirm(&quot;完成的不错！&quot;)&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;">
   
     <link rel="alternative" href="/atom.xml" title="cike home" type="application/atom+xml">
   
@@ -44,7 +47,7 @@
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			<img lazy-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" class="js-avatar">
 			
 		</a>
 
@@ -52,6 +55,8 @@
 		  <h1 class="header-author"><a href="/">cike</a></h1>
 		</hgroup>
 
+		
+		<p class="header-subtitle">Freedom</p>
 		
 
 		
@@ -147,6 +152,8 @@
 			  <h1 class="header-author">cike</h1>
 			</hgroup>
 			
+			<p class="header-subtitle">Freedom</p>
+			
 			<nav class="header-menu">
 				<ul>
 				
@@ -202,6 +209,7 @@
       
         <p>没有任何过滤的情况：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;confirm(<span class="string">"完成的不错！"</span>)&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;alert(1)&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>使用”   &gt;来闭合标签</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test<span class="string">"&gt;&lt;script&gt;confirm("</span>完成的不错！<span class="string">")&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
 <p>过滤了尖括号，用事件来弹窗</p>
@@ -263,7 +271,7 @@
 </article>
 
 
-<div class="ds-share share" data-thread-key="XSS游戏学习总结备忘录" data-title="XSS游戏学习总结备忘录" data-url="http://yoursite.com/2019/01/08/XSS游戏学习总结备忘录/"  data-images="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" data-content="XSS游戏学习总结备忘录">
+<div class="ds-share share" data-thread-key="XSS游戏学习总结备忘录" data-title="XSS游戏学习总结备忘录" data-url="http://www.7wawa.com/2019/01/08/XSS游戏学习总结备忘录/"  data-images="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" data-content="XSS游戏学习总结备忘录">
     <div class="ds-share-inline">
       <ul  class="ds-share-icons-16">
       	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
@@ -304,7 +312,7 @@
 	var yiliaConfig = {
 		fancybox: true,
 		mathjax: true,
-		animate: ,
+		animate: true,
 		isHome: false,
 		isPost: true,
 		isArchive: false,

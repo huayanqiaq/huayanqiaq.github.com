@@ -3,20 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>geoip处理区分IP地理位置 | cike home</title>
+  <title>自由人-geoip处理区分IP地理位置 | cike home</title>
 
   <!-- keywords -->
+  
+    <meta name="keywords" content="自由人">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="zmap官方开放了80端口并且80端口是http服务的全球ip地址下载：https://scans.io/zsearch/4bj9dm7d2nmyd1ad-80-http-get-full_ipv4-20160903T201338-zmap-results.csv.lz4 脚本的目的就是为了利用GEOIP区分处理出哪些IP地址是中国的，只取出中国的IP地址，然后来利用爬虫抓取 使用脚本前需要安装">
+<meta name="keywords" content="自由人">
 <meta property="og:type" content="article">
 <meta property="og:title" content="geoip处理区分IP地理位置">
-<meta property="og:url" content="http://yoursite.com/2018/10/06/geoip处理区分IP地理位置/index.html">
+<meta property="og:url" content="http://www.7wawa.com/2018/10/06/geoip处理区分IP地理位置/index.html">
 <meta property="og:site_name" content="cike home">
 <meta property="og:description" content="zmap官方开放了80端口并且80端口是http服务的全球ip地址下载：https://scans.io/zsearch/4bj9dm7d2nmyd1ad-80-http-get-full_ipv4-20160903T201338-zmap-results.csv.lz4 脚本的目的就是为了利用GEOIP区分处理出哪些IP地址是中国的，只取出中国的IP地址，然后来利用爬虫抓取 使用脚本前需要安装">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-06T13:15:52.566Z">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-09T07:16:12.917Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="geoip处理区分IP地理位置">
 <meta name="twitter:description" content="zmap官方开放了80端口并且80端口是http服务的全球ip地址下载：https://scans.io/zsearch/4bj9dm7d2nmyd1ad-80-http-get-full_ipv4-20160903T201338-zmap-results.csv.lz4 脚本的目的就是为了利用GEOIP区分处理出哪些IP地址是中国的，只取出中国的IP地址，然后来利用爬虫抓取 使用脚本前需要安装">
@@ -44,7 +47,7 @@
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			<img lazy-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" class="js-avatar">
 			
 		</a>
 
@@ -52,6 +55,8 @@
 		  <h1 class="header-author"><a href="/">cike</a></h1>
 		</hgroup>
 
+		
+		<p class="header-subtitle">Freedom</p>
 		
 
 		
@@ -147,6 +152,8 @@
 			  <h1 class="header-author">cike</h1>
 			</hgroup>
 			
+			<p class="header-subtitle">Freedom</p>
+			
 			<nav class="header-menu">
 				<ul>
 				
@@ -202,7 +209,9 @@
       
         <p>zmap官方开放了80端口并且80端口是http服务的全球ip地址下载：<br><a href="https://scans.io/zsearch/4bj9dm7d2nmyd1ad-80-http-get-full_ipv4-20160903T201338-zmap-results.csv.lz4" target="_blank" rel="noopener">https://scans.io/zsearch/4bj9dm7d2nmyd1ad-80-http-get-full_ipv4-20160903T201338-zmap-results.csv.lz4</a></p>
 <p>脚本的目的就是为了利用GEOIP区分处理出哪些IP地址是中国的，只取出中国的IP地址，然后来利用爬虫抓取</p>
-<p>使用脚本前需要安装 pip install pygeoip<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygeoip</span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line">f=open(<span class="string">'ip.txt'</span>,<span class="string">'w'</span>)</span><br><span class="line">gi = pygeoip.GeoIP(<span class="string">'GeoLiteCity.dat'</span>, pygeoip.MEMORY_CACHE)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'123.csv'</span>,<span class="string">'rb'</span>) <span class="keyword">as</span> file:</span><br><span class="line">    filecsv=csv.reader(file)</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> filecsv:</span><br><span class="line">        location = gi.record_by_addr(line[<span class="number">0</span>])</span><br><span class="line">        <span class="comment">#print location</span></span><br><span class="line">        <span class="keyword">if</span> location:</span><br><span class="line">            <span class="keyword">if</span> location[<span class="string">'country_code'</span>]==<span class="string">"CN"</span>:</span><br><span class="line">                f.write(line[<span class="number">0</span>]+<span class="string">"\n"</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure></p>
+<p>使用脚本前需要安装 pip install pygeoip</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygeoip</span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line">f=open(<span class="string">'ip.txt'</span>,<span class="string">'w'</span>)</span><br><span class="line">gi = pygeoip.GeoIP(<span class="string">'GeoLiteCity.dat'</span>, pygeoip.MEMORY_CACHE)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'123.csv'</span>,<span class="string">'rb'</span>) <span class="keyword">as</span> file:</span><br><span class="line">    filecsv=csv.reader(file)</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> filecsv:</span><br><span class="line">        location = gi.record_by_addr(line[<span class="number">0</span>])</span><br><span class="line">        <span class="comment">#print location</span></span><br><span class="line">        <span class="keyword">if</span> location:</span><br><span class="line">            <span class="keyword">if</span> location[<span class="string">'country_code'</span>]==<span class="string">"CN"</span>:</span><br><span class="line">                f.write(line[<span class="number">0</span>]+<span class="string">"\n"</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -233,7 +242,7 @@
 </article>
 
 
-<div class="ds-share share" data-thread-key="geoip处理区分IP地理位置" data-title="geoip处理区分IP地理位置" data-url="http://yoursite.com/2018/10/06/geoip处理区分IP地理位置/"  data-images="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" data-content="geoip处理区分IP地理位置">
+<div class="ds-share share" data-thread-key="geoip处理区分IP地理位置" data-title="geoip处理区分IP地理位置" data-url="http://www.7wawa.com/2018/10/06/geoip处理区分IP地理位置/"  data-images="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" data-content="geoip处理区分IP地理位置">
     <div class="ds-share-inline">
       <ul  class="ds-share-icons-16">
       	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
@@ -274,7 +283,7 @@
 	var yiliaConfig = {
 		fancybox: true,
 		mathjax: true,
-		animate: ,
+		animate: true,
 		isHome: false,
 		isPost: true,
 		isArchive: false,
