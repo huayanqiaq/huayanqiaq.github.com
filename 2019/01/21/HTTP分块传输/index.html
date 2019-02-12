@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>自由人-HTTP分块传输 | cike home</title>
+
+  <!-- keywords -->
+  
+    <meta name="keywords" content="自由人">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="利用pipline绕过修改为正常内容id=1，再将数据包的Content-Length的值设置为修改后的【id=1】的字符长度即4，最后将Connection字段值设为keep-alive。提交后如图七所示，会返回两个响应包，分别对应两个请求">
+<meta name="keywords" content="自由人">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP分块传输">
+<meta property="og:url" content="http://www.7wawa.com/2019/01/21/HTTP分块传输/index.html">
+<meta property="og:site_name" content="cike home">
+<meta property="og:description" content="利用pipline绕过修改为正常内容id=1，再将数据包的Content-Length的值设置为修改后的【id=1】的字符长度即4，最后将Connection字段值设为keep-alive。提交后如图七所示，会返回两个响应包，分别对应两个请求">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/01/21/5c4546f470d85.png">
+<meta property="og:image" content="https://i.loli.net/2019/01/21/5c4548816636f.png">
+<meta property="og:image" content="https://i.loli.net/2019/01/21/5c4548e071251.png">
+<meta property="og:image" content="https://i.loli.net/2019/01/21/5c454909a8f01.png">
+<meta property="og:updated_time" content="2019-01-21T04:27:16.545Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTTP分块传输">
+<meta name="twitter:description" content="利用pipline绕过修改为正常内容id=1，再将数据包的Content-Length的值设置为修改后的【id=1】的字符长度即4，最后将Connection字段值设为keep-alive。提交后如图七所示，会返回两个响应包，分别对应两个请求">
+<meta name="twitter:image" content="https://i.loli.net/2019/01/21/5c4546f470d85.png">
+  
+    <link rel="alternative" href="/atom.xml" title="cike home" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1538294497334&di=c419c13db1186d7f3f9372f2d0801beb&imgtype=0&src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">cike</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Freedom</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/huayanqiaq">Cike Github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">cike</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">cike</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Freedom</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-HTTP分块传输" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/21/HTTP分块传输/" class="article-date">
+  	<time datetime="2019-01-21T04:06:30.000Z" itemprop="datePublished">2019-01-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HTTP分块传输
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="利用pipline绕过"><a href="#利用pipline绕过" class="headerlink" title="利用pipline绕过"></a>利用pipline绕过</h2><p>修改为正常内容id=1，再将数据包的Content-Length的值设置为修改后的【id=1】的字符长度即4，最后将Connection字段值设为keep-alive。提交后如图七所示，会返回两个响应包，分别对应两个请求</p>
+<a id="more"></a>
+<p><img src="https://i.loli.net/2019/01/21/5c4546f470d85.png" alt=""></p>
+<h2 id="二-利用分块编码传输绕过"><a href="#二-利用分块编码传输绕过" class="headerlink" title="二.利用分块编码传输绕过"></a>二.利用分块编码传输绕过</h2><p>在头部加入 Transfer-Encoding: chunked 之后，就代表这个报文采用了分块编码。这时，post请求报文中的数据部分需要改为用一系列分块来传输。每个分块包含十六进制的长度值和数据，长度值独占一行，长度不包括它结尾的，也不包括分块数据结尾的，且最后需要用0独占一行表示结束</p>
+<p><img src="https://i.loli.net/2019/01/21/5c4548816636f.png" alt=""></p>
+<p>通过阅读规范发现分块传输可以在长度标识处加上分号“;”作为注释，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">9;kkkkk</span><br><span class="line">1234567=1</span><br><span class="line">4;ooo=222</span><br><span class="line">2345</span><br><span class="line">0</span><br><span class="line">(两个换行)</span><br></pre></td></tr></table></figure>
+<h2 id="技巧2-Bypass-ModSecurity"><a href="#技巧2-Bypass-ModSecurity" class="headerlink" title="技巧2 Bypass ModSecurity"></a>技巧2 Bypass ModSecurity</h2><p>众所周知ModSecurity是加载在中间件上的插件，所以不需要理会解析http数据包的问题，因为中间件已经帮它处理完了，那么无论使用常规的分块还是加了注释的分块数据包，ModSecurity都能直接获取到完整的http数据包然后匹配危险关键字，所以一些基于ModSecurity做的WAF产品难道就不受影响吗？</p>
+<p>接下来我们传输一个畸形的分块数据包看看</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">请求:</span><br><span class="line">POST /sql.php?id=2%20union HTTP/1.1</span><br><span class="line">......</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line"></span><br><span class="line">1</span><br><span class="line">aa</span><br><span class="line">0</span><br><span class="line">(两个换行)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">返回:</span><br><span class="line">&lt;title&gt;400 Bad Request&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;&lt;body&gt;</span><br><span class="line">&lt;h1&gt;Bad Request&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;Your browser sent a request that this server could not understand.&lt;br /&gt;</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;hr&gt;</span><br><span class="line">&lt;address&gt;Apache/2.2.15 (CentOS) Server at 10.10.10.10 Port 80&lt;/address&gt;</span><br><span class="line">&lt;/body&gt;&lt;/html&gt;</span><br><span class="line">========GET==========</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">   [id] =&gt; 2 union</span><br><span class="line">)</span><br><span class="line">========POST==========</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>可以看到虽然apache报错了，但是因为apache容错很强，所以我们提交的参数依然传到了php，而我们的ModSecurity并没有处理400错误的数据包，最终绕过了ModSecurity</p>
+<h2 id="三-利用协议未覆盖进行绕过"><a href="#三-利用协议未覆盖进行绕过" class="headerlink" title="三.利用协议未覆盖进行绕过"></a>三.利用协议未覆盖进行绕过</h2><p>HTTP头里的Content-Type一般有application/x-www-form-urlencoded，multipart/form-data，text/plain三种，其中multipart/form-data表示数据被编码为一条消息，页上的每个控件对应消息中的一个部分。所以，当waf没有规则匹配该协议传输的数据时可被绕过。</p>
+<p>1.将头部Content-Type改为multipart/form-data; boundary=69   然后设置分割符内的Content-Disposition的name为要传参数的名称。数据部分则放在分割结束符上一行</p>
+<p><img src="https://i.loli.net/2019/01/21/5c4548e071251.png" alt=""></p>
+<h2 id="四-分块编码-协议未覆盖组合绕过"><a href="#四-分块编码-协议未覆盖组合绕过" class="headerlink" title="四.分块编码+协议未覆盖组合绕过"></a>四.分块编码+协议未覆盖组合绕过</h2><p><img src="https://i.loli.net/2019/01/21/5c454909a8f01.png" alt=""></p>
+<p><strong>注意：</strong>第2块，第3块，第7块，和第8块。</p>
+<p><strong>第2块</strong>中需要满足</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">长度值</span><br><span class="line">空行</span><br><span class="line">Content-Disposition: name=&quot;id&quot;</span><br><span class="line">空行</span><br></pre></td></tr></table></figure>
+<p>这种形式，且长度值要将两个空行的长度计算在内（空行长度为2）。</p>
+<p><strong>第3块</strong>，即数据开始部分需满足</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">长度值 </span><br><span class="line">空行</span><br><span class="line">数据</span><br></pre></td></tr></table></figure>
+<p>形式，且需将空行计算在内。</p>
+<p><strong>第7块</strong>即分割边界结束部分，需满足</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">长度值</span><br><span class="line">空行</span><br><span class="line">分割结束符</span><br><span class="line">空行</span><br></pre></td></tr></table></figure>
+<p>形式，且计算空行长度在内。</p>
+<p><strong>第8块</strong>需满足</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0  </span><br><span class="line">空行</span><br><span class="line">空行</span><br></pre></td></tr></table></figure>
+<p>形式。如果不同时满足这四块的形式要求，payload将不会生效。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/21/windows下载执行命令大全/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          windows下载执行命令大全
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/19/反弹shell姿势/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">反弹shell姿势</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="HTTP分块传输" data-title="HTTP分块传输" data-url="http://www.7wawa.com/2019/01/21/HTTP分块传输/"  data-images="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538294497334&amp;di=c419c13db1186d7f3f9372f2d0801beb&amp;imgtype=0&amp;src=http%3A%2F%2Fpic.qqtn.com%2Fup%2F2018-8%2F15350201492699003.jpg" data-content="HTTP分块传输">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 cike
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
