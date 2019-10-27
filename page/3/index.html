@@ -173,6 +173,124 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-dante搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/06/dante搭建/" class="article-date">
+  	<time datetime="2018-10-06T12:46:51.000Z" itemprop="datePublished">2018-10-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/06/dante搭建/">
+        dante搭建
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> wget <a href="http://www.inet.no/dante/files/dante-1.4.1.tar.gz" target="_blank" rel="noopener">http://www.inet.no/dante/files/dante-1.4.1.tar.gz</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc openssl-devel pcre-devel zlib-devel libtool c++ pam-devel pam</span><br><span class="line">cd /opt/</span><br><span class="line">tar xvzf dante-1.4.1.tar.gz &amp;&amp; cd dante-1.4.1</span><br><span class="line">./configure &amp;&amp; make &amp;&amp; make install</span><br><span class="line">useradd  -s /sbin/nologin socket</span><br><span class="line">passwd socket</span><br><span class="line">vi /etc/danted.conf</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+        <p class="article-more-link">
+          <a  href="/2018/10/06/dante搭建/#more">more >></a>
+        </p>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-liunx文件操作" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/06/liunx文件操作/" class="article-date">
+  	<time datetime="2018-10-06T12:45:31.000Z" itemprop="datePublished">2018-10-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/06/liunx文件操作/">
+        liunx文件操作
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近和几个朋友开发项目，期间使用了一台服务器跑模型，这台服务器是多人公用的，很多人都在上面有自己的账号，互不干涉内政，一切看起来十分井然有序。近期，这个服务器上刚挂载了一块新硬盘，是一位朋友使用 root 账号挂载的，然后将磁盘映射到某个文件夹下。然而挂载好了之后发现使用普通账号没有权限在文件夹下操作，无法创建文件，于是他干脆就直接把文件夹权限改成 777 了。我心想，这还了得，改成 777 了，其他人在里面乱改咋办？会出人命的！所以，我就这件事详细梳理了一下 Linux 下的用户、用户组、文件权限等基本知识，看完这些，以后不要动不动就把文件夹改成 777 权限了。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+        <p class="article-more-link">
+          <a  href="/2018/10/06/liunx文件操作/#more">more >></a>
+        </p>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-debian下mongodb的安装" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
