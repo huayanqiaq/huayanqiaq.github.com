@@ -11,19 +11,19 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="子域接管漏洞​    所谓得子域接管就是我们去接管域名得解析，很多都存在域名cname解析上，比如cname到github得域名 项目引用Echocipher/Subdomain-Takeover 他这个是单子域名检测，自己写了一个批量得来配合这个脚本 代码： 123456789101112131415161718192021222324252627282930313233343536373839">
+  <meta name="description" content="子域接管漏洞​    所谓得子域接管就是我们去接管域名得解析，很多都存在域名cname解析上，比如cname到github得域名 项目引用Echocipher/Subdomain-Takeover 他这个是单子域名检测，自己写了一个批量得来配合这个脚本">
 <meta name="keywords" content="自由人">
 <meta property="og:type" content="article">
 <meta property="og:title" content="子域接管">
 <meta property="og:url" content="http://www.7wawa.com/2020/01/09/子域接管/index.html">
 <meta property="og:site_name" content="cike home">
-<meta property="og:description" content="子域接管漏洞​    所谓得子域接管就是我们去接管域名得解析，很多都存在域名cname解析上，比如cname到github得域名 项目引用Echocipher/Subdomain-Takeover 他这个是单子域名检测，自己写了一个批量得来配合这个脚本 代码： 123456789101112131415161718192021222324252627282930313233343536373839">
+<meta property="og:description" content="子域接管漏洞​    所谓得子域接管就是我们去接管域名得解析，很多都存在域名cname解析上，比如cname到github得域名 项目引用Echocipher/Subdomain-Takeover 他这个是单子域名检测，自己写了一个批量得来配合这个脚本">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="c:/Users/37606/AppData/Roaming/Typora/typora-user-images/image-20200109152850907.png">
-<meta property="og:updated_time" content="2020-01-09T07:30:06.501Z">
+<meta property="og:updated_time" content="2020-01-09T07:31:51.885Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="子域接管">
-<meta name="twitter:description" content="子域接管漏洞​    所谓得子域接管就是我们去接管域名得解析，很多都存在域名cname解析上，比如cname到github得域名 项目引用Echocipher/Subdomain-Takeover 他这个是单子域名检测，自己写了一个批量得来配合这个脚本 代码： 123456789101112131415161718192021222324252627282930313233343536373839">
+<meta name="twitter:description" content="子域接管漏洞​    所谓得子域接管就是我们去接管域名得解析，很多都存在域名cname解析上，比如cname到github得域名 项目引用Echocipher/Subdomain-Takeover 他这个是单子域名检测，自己写了一个批量得来配合这个脚本">
 <meta name="twitter:image" content="c:/Users/37606/AppData/Roaming/Typora/typora-user-images/image-20200109152850907.png">
   
     <link rel="alternative" href="/atom.xml" title="cike home" type="application/atom+xml">
@@ -212,6 +212,7 @@
         <h1 id="子域接管漏洞"><a href="#子域接管漏洞" class="headerlink" title="子域接管漏洞"></a>子域接管漏洞</h1><p>​    所谓得子域接管就是我们去接管域名得解析，很多都存在域名cname解析上，比如cname到github得域名</p>
 <p>项目引用<a href="https://github.com/Echocipher" target="_blank" rel="noopener">Echocipher</a>/<strong><a href="https://github.com/Echocipher/Subdomain-Takeover" target="_blank" rel="noopener">Subdomain-Takeover</a></strong></p>
 <p>他这个是单子域名检测，自己写了一个批量得来配合这个脚本</p>
+<a id="more"></a>
 <p>代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#coding:utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">@author: cike</span></span><br><span class="line"><span class="string">@time: 2020/1/6 18:05</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> subdomain_takeover <span class="keyword">import</span> cname_get,providers_read,takeover_check</span><br><span class="line"><span class="keyword">from</span> termcolor <span class="keyword">import</span> cprint</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'domain.txt'</span>,<span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">for</span> domain <span class="keyword">in</span> f:</span><br><span class="line">            time.sleep(<span class="number">1</span>)</span><br><span class="line">            url = domain.strip()</span><br><span class="line">            cname = cname_get(url)</span><br><span class="line">            <span class="keyword">if</span> cname != <span class="keyword">None</span>:</span><br><span class="line">                print(<span class="string">'[*]CNAME获取成功，正在验证是否存在于敏感列表中...'</span>, cname)</span><br><span class="line">                json_dicts = providers_read()  <span class="comment"># 接收指纹信息</span></span><br><span class="line">                <span class="keyword">for</span> json_dict <span class="keyword">in</span> json_dicts:</span><br><span class="line">                    fingerprint_lists = json_dict[<span class="string">'response'</span>]  <span class="comment"># 存储指纹信息</span></span><br><span class="line">                    fingercname_lists = json_dict[<span class="string">'cname'</span>]  <span class="comment"># 存储cname信息</span></span><br><span class="line">                    <span class="keyword">for</span> fingercname <span class="keyword">in</span> fingercname_lists:</span><br><span class="line">                        <span class="comment"># 查看cname解析值是否在指纹列表中</span></span><br><span class="line">                        <span class="keyword">if</span> fingercname <span class="keyword">in</span> cname:</span><br><span class="line">                            print(<span class="string">'[*]存在于指纹列表中，正在检测子域接管风险...'</span>)</span><br><span class="line">                            cprint((url,cname), <span class="string">'red'</span>)</span><br><span class="line">                            takeover_check(url, cname, fingerprint_lists)  <span class="comment"># 检查是否有风险以及是否已经被接管</span></span><br><span class="line">                        <span class="keyword">else</span>:</span><br><span class="line">                            <span class="keyword">pass</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(<span class="string">'[*]'</span> + url + <span class="string">'不存在被接管风险'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 <p>项目目录：</p>
@@ -229,7 +230,7 @@
   
   
     <a href="/2020/01/09/BURP破解前端加密Intruder/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
+      <div class="article-nav-title">BURP破解前端加密Intruder</div>
       <strong class="article-nav-caption">&gt;</strong>
     </a>
   
