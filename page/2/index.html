@@ -173,6 +173,64 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-php爆绝对路径" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/25/php爆绝对路径/" class="article-date">
+  	<time datetime="2018-12-25T03:23:02.000Z" itemprop="datePublished">2018-12-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/25/php爆绝对路径/">
+        php爆绝对路径
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="php爆绝对路径方法"><a href="#php爆绝对路径方法" class="headerlink" title="php爆绝对路径方法"></a>php爆绝对路径方法</h1><h3 id="单引号爆路径"><a href="#单引号爆路径" class="headerlink" title="单引号爆路径"></a>单引号爆路径</h3><p>直接在URL后面加单引号，要求单引号没有被过滤(gpc=off)且服务器默认返回错误信息。<br><code>www.xxx.com/news.php?id=1′</code></p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+        <p class="article-more-link">
+          <a  href="/2018/12/25/php爆绝对路径/#more">more >></a>
+        </p>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-python-多线程" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -700,62 +758,6 @@
 
 
   
-    <article id="post-URLBASE64解码编码" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/10/06/URLBASE64解码编码/" class="article-date">
-  	<time datetime="2018-10-06T12:50:32.000Z" itemprop="datePublished">2018-10-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/06/URLBASE64解码编码/">
-        URLBASE64解码编码
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="个人解密JWT的尝试"><a href="#个人解密JWT的尝试" class="headerlink" title="个人解密JWT的尝试"></a>个人解密JWT的尝试</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># _*_ coding:utf-8 _*_</span></span><br><span class="line">__author__ = <span class="string">'cike'</span></span><br><span class="line">__date__ = <span class="string">'18-7-31 下午9:03'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="comment"># str="加号cike"</span></span><br><span class="line"><span class="comment"># content1 = base64.b64encode(str.encode('utf-8')) #进行 base64编码</span></span><br><span class="line"><span class="comment"># # num = len(content1)%4</span></span><br><span class="line"><span class="comment"># # print(num)</span></span><br><span class="line"><span class="comment"># print(content1)</span></span><br><span class="line"><span class="comment"># content2 = base64.urlsafe_b64encode(str.encode('utf-8'))#进行 urlbase64　编码</span></span><br><span class="line"><span class="comment"># # print(type(content2))</span></span><br><span class="line"><span class="comment"># print(content2)</span></span><br><span class="line">str2 = <span class="string">'eyJpYXQiOjE1MzMwNDY2NTksInN1YiI6IntcInRyYWRlcklkXCI6XCIwMDAwMDAzNTk2M1wifSIsImlzcyI6IiIsImV4cCI6MTUzMzEzMzA1OX0=='</span>.encode(<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="comment">#可以使用%4判断==号</span></span><br><span class="line"><span class="comment"># print(type(str2))</span></span><br><span class="line"><span class="comment"># print(str2)</span></span><br><span class="line">content3 = base64.urlsafe_b64decode(str2)<span class="comment">#进行urlbase64解码</span></span><br><span class="line">print(content3)</span><br></pre></td></tr></table></figure>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -766,7 +768,7 @@
   <div class="outer">
     <div id="footer-info">
       <div class="footer-left">
-        &copy; 2019 cike
+        &copy; 2020 cike
       </div>
         <div class="footer-right">
           <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
