@@ -173,6 +173,65 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-weblogic-ssrf-漏洞笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/08/weblogic-ssrf-漏洞笔记/" class="article-date">
+  	<time datetime="2019-01-08T07:13:42.000Z" itemprop="datePublished">2019-01-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/08/weblogic-ssrf-漏洞笔记/">
+        weblogic ssrf 漏洞笔记
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="weblogic-ssrf-漏洞笔记"><a href="#weblogic-ssrf-漏洞笔记" class="headerlink" title="[weblogic ssrf 漏洞笔记]"></a>[weblogic ssrf 漏洞笔记]</h1><p><strong>CVE-2014-4210</strong></p>
+<p>　　Oracle WebLogic web server即可以被外部主机访问，同时也允许访问内部主机。比如有一个jsp页面SearchPublicReqistries.jsp，我们可以利用它进行攻击，未经授权通过weblogic server连接任意主机的任意TCP 端口，可以能冗长的响应来推断在此端口上是否有服务在监听此端口。（ps:本人觉得挺鸡肋的，要是目标机没开redis的6379端口没法getshll了。当然也是自己太菜）</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+        <p class="article-more-link">
+          <a  href="/2019/01/08/weblogic-ssrf-漏洞笔记/#more">more >></a>
+        </p>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-php爆绝对路径" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -686,65 +745,6 @@
       
       <div class="clearfix"></div>
     </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-centos6-64位一键桌面环境-VNC" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/10/06/centos6-64位一键桌面环境-VNC/" class="article-date">
-  	<time datetime="2018-10-06T12:52:09.000Z" itemprop="datePublished">2018-10-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/06/centos6-64位一键桌面环境-VNC/">
-        centos6 64位一键桌面环境+VNC
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>第一、登陆SSH输入一键安装VNC脚本</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nano -y; yum update -y; yum upgrade -y; yum install tigervnc-server -y; yum groupinstall "Desktop" -y; yum install firefox -y; rpm -ivh https://soft.laozuo.org/vnc/adobe-release-x86_64-1.0-1.noarch.rpm; rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux; yum install flash-plugin nspluginwrapper alsa-plugins-pulseaudio libcurl -y; echo 'echo "nameserver 8.8.8.8" &gt;&gt; /etc/resolv.conf; ' &gt;&gt; /etc/rc.local; echo 'VNCSERVERS="1:root"' &gt;&gt; /etc/sysconfig/vncservers; echo 'VNCSERVERARGS[1]="-geometry 1000x700"' &gt;&gt; /etc/sysconfig/vncservers; vncpasswd; chkconfig vncserver on --level 345; reboot;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-        <p class="article-more-link">
-          <a  href="/2018/10/06/centos6-64位一键桌面环境-VNC/#more">more >></a>
-        </p>
       
     
   </div>

@@ -173,6 +173,65 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-centos6-64位一键桌面环境-VNC" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/06/centos6-64位一键桌面环境-VNC/" class="article-date">
+  	<time datetime="2018-10-06T12:52:09.000Z" itemprop="datePublished">2018-10-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/06/centos6-64位一键桌面环境-VNC/">
+        centos6 64位一键桌面环境+VNC
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>第一、登陆SSH输入一键安装VNC脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nano -y; yum update -y; yum upgrade -y; yum install tigervnc-server -y; yum groupinstall "Desktop" -y; yum install firefox -y; rpm -ivh https://soft.laozuo.org/vnc/adobe-release-x86_64-1.0-1.noarch.rpm; rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux; yum install flash-plugin nspluginwrapper alsa-plugins-pulseaudio libcurl -y; echo 'echo "nameserver 8.8.8.8" &gt;&gt; /etc/resolv.conf; ' &gt;&gt; /etc/rc.local; echo 'VNCSERVERS="1:root"' &gt;&gt; /etc/sysconfig/vncservers; echo 'VNCSERVERARGS[1]="-geometry 1000x700"' &gt;&gt; /etc/sysconfig/vncservers; vncpasswd; chkconfig vncserver on --level 345; reboot;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+        <p class="article-more-link">
+          <a  href="/2018/10/06/centos6-64位一键桌面环境-VNC/#more">more >></a>
+        </p>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-URLBASE64解码编码" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
