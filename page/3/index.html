@@ -173,6 +173,61 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Python-发送邮件" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/06/Python-发送邮件/" class="article-date">
+  	<time datetime="2018-10-06T12:53:19.000Z" itemprop="datePublished">2018-10-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/06/Python-发送邮件/">
+        Python 发送邮件
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="今天要介绍的重点对象——yagmail库"><a href="#今天要介绍的重点对象——yagmail库" class="headerlink" title="今天要介绍的重点对象——yagmail库"></a>今天要介绍的重点对象——yagmail库</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> yagmail</span><br><span class="line">yag = yagmail.SMTP(user=<span class="string">'user@163.com'</span>,password=<span class="string">'1234'</span>,host=<span class="string">'smtp.163.com'</span>)</span><br><span class="line">contents = [<span class="string">'这里是内容'</span>]</span><br><span class="line">yag.send(<span class="string">'target@qq.com'</span>,<span class="string">'主题：这是一个主题'</span>,contents)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-centos6-64位一键桌面环境-VNC" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
