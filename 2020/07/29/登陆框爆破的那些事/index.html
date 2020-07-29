@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729225355.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729230148.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729230253.png">
-<meta property="og:updated_time" content="2020-07-29T15:17:33.584Z">
+<meta property="og:updated_time" content="2020-07-29T15:26:45.739Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="登陆框爆破的那些事">
 <meta name="twitter:description" content="1.有验证码登陆的情况1.1 验证码直接不起作用可以直接重复利用​">
@@ -284,17 +284,17 @@
 <tbody>
 <tr>
 <td>1</td>
-<td><code>&lt;@IMG_RAW&gt;&lt;/@IMG_RAW&gt;</code></td>
+<td>&lt;@IMG_RAW&gt;xxxx\&lt;/@IMG_RAW&gt;</td>
 <td>代表验证码图片原二进制内容</td>
 </tr>
 <tr>
 <td>2</td>
-<td><code>&lt;@URLENCODE&gt;&lt;/@URLENCODE&gt;</code></td>
+<td>&lt;@URLENCODE&gt;xxxxx\&lt;/@URLENCODE&gt;</td>
 <td>对标签内的内容进行url编码</td>
 </tr>
 <tr>
 <td>3</td>
-<td><code>&lt;@BASE64&gt;&lt;/@BASE64&gt;</code></td>
+<td>&lt;@BASE64&gt;xxxx\&lt;/@BASE64&gt;</td>
 <td>对标签内的内容进行base64编码</td>
 </tr>
 </tbody>
@@ -306,7 +306,7 @@
 <p><img src="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729225355.png" alt=""></p>
 <p>因为匹配结构的选取我这里采用的正则所以这样写，相当于这个api接口的模版就做好了 可以保存下次直接调用。</p>
 <p>Intruder模块调用</p>
-<p>配置好各项后，可以点击<code>锁定</code>对当前配置进行锁定，防止被修改导致爆破失败！接着安装以下步骤进行配置</p>
+<p>配置好各项后，可以点击锁定对当前配置进行锁定，防止被修改导致爆破失败！接着安装以下步骤进行配置</p>
 <p><img src="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729230148.png" alt=""></p>
 <p><img src="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729230253.png" alt=""></p>
 
