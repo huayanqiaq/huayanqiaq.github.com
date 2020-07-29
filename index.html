@@ -206,79 +206,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-有验证码登陆的情况"><a href="#1-有验证码登陆的情况" class="headerlink" title="1.有验证码登陆的情况"></a>1.有验证码登陆的情况</h2><h3 id="1-1-验证码直接不起作用可以直接重复利用"><a href="#1-1-验证码直接不起作用可以直接重复利用" class="headerlink" title="1.1 验证码直接不起作用可以直接重复利用"></a>1.1 验证码直接不起作用可以直接重复利用</h3><p><img src="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729185723.png" alt=""></p>
-<p>比如这样的一个登陆框，我们抓包看看。</p>
-<p><img src="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729185920.png" alt=""></p>
-<p>然后我们换一个用户名看看</p>
-<p><img src="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729190407.png" alt=""></p>
-<p>直接就可以看见验证码不失效可以重复利用，对于这种重复不失效的验证码。还可能存在另外一个情况就是，我们手动刷新一下验证码然后直接在burp当中手动填入新出现的验证码，这样也可能出现重复利用的效果。</p>
-<h3 id="1-2-在php环境当中绕过验证码"><a href="#1-2-在php环境当中绕过验证码" class="headerlink" title="1.2 在php环境当中绕过验证码"></a>1.2 在php环境当中绕过验证码</h3><blockquote>
-<p><a href="https://www.leavesongs.com/PHP/check-code-safe.html" target="_blank" rel="noopener">https://www.leavesongs.com/PHP/check-code-safe.html</a></p>
-</blockquote>
-<p>先说下验证码的生成比如下面这个代码</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">session_start();</span><br><span class="line"></span><br><span class="line">$randCode = <span class="string">''</span>;</span><br><span class="line">$chars = <span class="string">'abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNPRSTUVWXYZ23456789'</span>;</span><br><span class="line"><span class="keyword">for</span> ( $i = <span class="number">0</span>; $i &lt; <span class="number">5</span>; $i++ )&#123;</span><br><span class="line">	$randCode .= substr($chars, mt_rand(<span class="number">0</span>, strlen($chars) - <span class="number">1</span>), <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$_SESSION[<span class="string">'code'</span>] = strtoupper($randCode);</span><br><span class="line"></span><br><span class="line">$img = imagecreate(<span class="number">70</span>,<span class="number">22</span>);</span><br><span class="line">$bgColor = <span class="keyword">isset</span>($_GET[<span class="string">'mode'</span>]) &amp;&amp; $_GET[<span class="string">'mode'</span>] == <span class="string">'t'</span> ? imagecolorallocate($img,<span class="number">245</span>,<span class="number">245</span>,<span class="number">245</span>) : imagecolorallocate($img,<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>);</span><br><span class="line">$pixColor = imagecolorallocate($img,mt_rand(<span class="number">30</span>, <span class="number">180</span>), mt_rand(<span class="number">10</span>, <span class="number">100</span>), mt_rand(<span class="number">40</span>, <span class="number">250</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>($i = <span class="number">0</span>; $i &lt; <span class="number">5</span>; $i++)&#123;</span><br><span class="line">	$x = $i * <span class="number">13</span> + mt_rand(<span class="number">0</span>, <span class="number">4</span>) - <span class="number">2</span>;</span><br><span class="line">	$y = mt_rand(<span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line">	$text_color = imagecolorallocate($img, mt_rand(<span class="number">30</span>, <span class="number">180</span>), mt_rand(<span class="number">10</span>, <span class="number">100</span>), mt_rand(<span class="number">40</span>, <span class="number">250</span>));</span><br><span class="line">	imagechar($img, <span class="number">5</span>, $x + <span class="number">5</span>, $y + <span class="number">3</span>, $randCode[$i], $text_color);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>($j = <span class="number">0</span>; $j &lt; <span class="number">60</span>; $j++)&#123;</span><br><span class="line">	$x = mt_rand(<span class="number">0</span>,<span class="number">70</span>);</span><br><span class="line">	$y = mt_rand(<span class="number">0</span>,<span class="number">22</span>);</span><br><span class="line">	imagesetpixel($img,$x,$y,$pixColor);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">header(<span class="string">'Content-Type: image/png'</span>);</span><br><span class="line">imagepng($img);</span><br><span class="line">imagedestroy($img);</span><br></pre></td></tr></table></figure>
-<p>第一个for循环后我们可以看到$_SESSION[‘code’] = strtoupper($randCode); 他把我们的验证码转换成大写赋值到session里了</p>
-<p>那么验证的过程就是，我们首先生成5个随机字符，保存到session里。然后把这5个字符画成一个图片给用户看，让用户识别，填写在表单里提交后和我们session里的验证码比对。</p>
-<p>因为是和session相关的所有我们就可以这样来利用，作为一个正常用户，我们每访问一次需要填写验证码的页面，生成验证码的脚本都会执行一次，也就说会生成一个新验证码赋值到session里，没有任何问题。但对于一个机器(或一个暴力破解密码脚本)，它第一次访问需要填写验证码的页面，然后在session中得到一个验证码，它以后就不用再次访问这个页面了。直接把第一次的数据包更改并再次发送即可，于是，如果没有清除session的网站，每次的验证码都和第一次相同，也就丧失了验证码的本来作用（假如我们发送一个新的session对应一个空值验证码来给服务器）。</p>
-<p>最简单的版本就是把session删除一位发送一个服务器都没有的session,然后把验证码字符串的value值留空，这样就可以绕过验证码了 。</p>
-<h3 id="1-3-PKAV-fuzzing工具对简单验证码的识别"><a href="#1-3-PKAV-fuzzing工具对简单验证码的识别" class="headerlink" title="1.3 PKAV fuzzing工具对简单验证码的识别"></a>1.3 PKAV fuzzing工具对简单验证码的识别</h3><p>像这种能简单识别的验证码能用pkav工具的就用这个吧，不过这个工具自带的验证码识别效果不怎么行，比较低，比如下面这种代底纹干扰的验证码，虽然有时候能识别正确，但是识别效率就比较低了，不带底纹干扰的验证码效果还是很不错的。</p>
-<p><img src="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729193826.png" alt=""></p>
-<p>在重放选项的时候最好把验证码的长度固定下这样有助于提高识别效率。</p>
-<p><img src="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729194306.png" alt=""></p>
-<h3 id="1-4-Burpsuite验证码插件来识别验证码"><a href="#1-4-Burpsuite验证码插件来识别验证码" class="headerlink" title="1.4 Burpsuite验证码插件来识别验证码"></a>1.4 Burpsuite验证码插件来识别验证码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">采用好基友c0ny1的工具captcha-killer</span><br><span class="line">http://gv7.me/articles/2019/burp-captcha-killer-usage/</span><br></pre></td></tr></table></figure>
-<p>只所以采用这款插件是因为，这款插件只是验证码接口的调用，这样就有助于我们后面自己开发各种api验证码接口来适应各种不同的验证码。</p>
-<p>工具有两个选项是需要发送过去的</p>
-<p><img src="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729194827.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Send to captcha panel  这个选项是需要把你访问验证码生成验证码图片的包体发送过去</span><br><span class="line">Send to interface panel  这个选项是需要把调用验证码识别api接口的包体仿进去</span><br></pre></td></tr></table></figure>
-<p>我们先来看下使用已经内置好的百度ocr识别模版载入来使用下</p>
-<p>我们首先发送图片包体过来，然后就会像下面这样</p>
-<p><img src="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729195822.png" alt=""></p>
-<p>然后我们在继续使用内置好的百度ocr模版，在template区域鼠标右键选择</p>
-<p><img src="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729195943.png" alt=""></p>
-<p>然后我们只需要去百度申请一个开发者账号和获取自己新建应用的token就行了。</p>
-<p><img src="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729200530.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">百度ocr token获取</span><br><span class="line">curl -i -k &apos;https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&amp;client_id=[API-KEY]&amp;client_secret=[SECRET-KEY]&apos;</span><br></pre></td></tr></table></figure>
-<p>然后我们填入生成的token然后点击识别两次来看看效果</p>
-<p><img src="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729201222.png" alt=""></p>
-<p>可以很清晰的看见识别效果还是很不错的，但是免费用户识别频率和次数每天都有限制，不是很方便。</p>
-<p>然后我们自己来制作一个第三方网站的识别api的模版范例（使用内置的标签）</p>
-<table>
-<thead>
-<tr>
-<th>ID</th>
-<th>标签</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td><code>&lt;@IMG_RAW&gt;&lt;/@IMG_RAW&gt;</code></td>
-<td>代表验证码图片原二进制内容</td>
-</tr>
-<tr>
-<td>2</td>
-<td><code>&lt;@URLENCODE&gt;&lt;/@URLENCODE&gt;</code></td>
-<td>对标签内的内容进行url编码</td>
-</tr>
-<tr>
-<td>3</td>
-<td><code>&lt;@BASE64&gt;&lt;/@BASE64&gt;</code></td>
-<td>对标签内的内容进行base64编码</td>
-</tr>
-</tbody>
-</table>
-<p>我们随便找一个打码平台，根据sdk调用api 然后我们抓到识别包体是这样的</p>
-<p><img src="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729223417.png" alt=""></p>
-<p>可以看见我们的识别图片的内容是在image标签里面，里面放的是图片的二进制数据的base64的结果，所以我们把这个包体发送到Send to interface panel 然后这样改写就可以调用了。</p>
-<p>然后找了个比较难的验证码来做测试和模版的编写。</p>
-<p><img src="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729225355.png" alt=""></p>
-<p>因为匹配结构的选取我这里采用的正则所以这样写，相当于这个api接口的模版就做好了 可以保存下次直接调用。</p>
-<p>Intruder模块调用</p>
-<p>配置好各项后，可以点击<code>锁定</code>对当前配置进行锁定，防止被修改导致爆破失败！接着安装以下步骤进行配置</p>
-<p><img src="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729230148.png" alt=""></p>
-<p><img src="https://raw.githubusercontent.com/huayanqiaq/blogimage/master/20200729230253.png" alt=""></p>
-
+        <h2 id="1-有验证码登陆的情况"><a href="#1-有验证码登陆的情况" class="headerlink" title="1.有验证码登陆的情况"></a>1.有验证码登陆的情况</h2><h3 id="1-1-验证码直接不起作用可以直接重复利用"><a href="#1-1-验证码直接不起作用可以直接重复利用" class="headerlink" title="1.1 验证码直接不起作用可以直接重复利用"></a>1.1 验证码直接不起作用可以直接重复利用</h3><p>​
       
     </div>
     
@@ -300,6 +228,10 @@
       
       <div class="clearfix"></div>
     </div>
+      
+        <p class="article-more-link">
+          <a  href="/2020/07/29/登陆框爆破的那些事/#more">more >></a>
+        </p>
       
     
   </div>
