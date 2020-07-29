@@ -177,6 +177,74 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-HTTP分块传输" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/01/21/HTTP分块传输/" class="article-date">
+  	<time datetime="2019-01-21T04:06:30.000Z" itemprop="datePublished">2019-01-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/21/HTTP分块传输/">
+        HTTP分块传输
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="利用pipline绕过"><a href="#利用pipline绕过" class="headerlink" title="利用pipline绕过"></a>利用pipline绕过</h2><p>修改为正常内容id=1，再将数据包的Content-Length的值设置为修改后的【id=1】的字符长度即4，最后将Connection字段值设为keep-alive。提交后如图七所示，会返回两个响应包，分别对应两个请求</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        
+<div class="counter-tag counter">
+    <span id="/2019/01/21/HTTP分块传输/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="HTTP分块传输">
+         &nbsp;
+        view
+    </span>
+</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+        <p class="article-more-link">
+          <a  href="/2019/01/21/HTTP分块传输/#more">more >></a>
+        </p>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-反弹shell姿势" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -787,72 +855,6 @@
         <p class="article-more-link">
           <a  href="/2018/10/06/python编程中在ubuntu中安装虚拟环境及环境配置/#more">more >></a>
         </p>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-sqlmap数据转中文字符串" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/10/06/sqlmap数据转中文字符串/" class="article-date">
-  	<time datetime="2018-10-06T13:03:00.000Z" itemprop="datePublished">2018-10-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/06/sqlmap数据转中文字符串/">
-        sqlmap数据转中文字符串
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>sqlmap数据转中文字符串</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="comment">#sqlmap 转中文字符串</span></span><br><span class="line">str = <span class="string">'\xb3\xac\xbc\xb6\xc7\xbf\xb4\xf3\xcc\xab\xcf\xb2\xbb\xb6\xc1\xcb'</span></span><br><span class="line">b = repr(str)</span><br><span class="line"><span class="keyword">print</span> unicode(eval(b),<span class="string">"gbk"</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        
-<div class="counter-tag counter">
-    <span id="/2018/10/06/sqlmap数据转中文字符串/" class="leancloud_visitors post-title-link"
-          style="font-size: 12px" data-flag-title="sqlmap数据转中文字符串">
-         &nbsp;
-        view
-    </span>
-</div>
-
-      
-      <div class="clearfix"></div>
-    </div>
       
     
   </div>

@@ -177,6 +177,72 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-sqlmap数据转中文字符串" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/06/sqlmap数据转中文字符串/" class="article-date">
+  	<time datetime="2018-10-06T13:03:00.000Z" itemprop="datePublished">2018-10-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/06/sqlmap数据转中文字符串/">
+        sqlmap数据转中文字符串
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>sqlmap数据转中文字符串</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"><span class="comment">#sqlmap 转中文字符串</span></span><br><span class="line">str = <span class="string">'\xb3\xac\xbc\xb6\xc7\xbf\xb4\xf3\xcc\xab\xcf\xb2\xbb\xb6\xc1\xcb'</span></span><br><span class="line">b = repr(str)</span><br><span class="line"><span class="keyword">print</span> unicode(eval(b),<span class="string">"gbk"</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        
+<div class="counter-tag counter">
+    <span id="/2018/10/06/sqlmap数据转中文字符串/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="sqlmap数据转中文字符串">
+         &nbsp;
+        view
+    </span>
+</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-中文姓名转拼音生产特定格式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
